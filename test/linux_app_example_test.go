@@ -6,9 +6,9 @@ import (
 	"github.com/gruntwork-io/terratest/modules/terraform"
 )
 
-func TestBasicExample(t *testing.T) {
+func TestLinuxAppExample(t *testing.T) {
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
-		TerraformDir: "../examples/basic",
+		TerraformDir: "../examples/linux-app",
 	})
 
 	defer terraform.Destroy(t, terraformOptions)

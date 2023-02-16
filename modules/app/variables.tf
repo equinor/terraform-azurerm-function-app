@@ -1,10 +1,10 @@
-variable "app_name" {
+variable "name" {
   description = "The name of this Function App."
   type        = string
 }
 
-variable "app_service_plan_name" {
-  description = "The name of this App Service plan."
+variable "app_service_plan_id" {
+  description = "The ID of the App Service plan to create this Function App for."
   type        = string
 }
 
@@ -37,12 +37,6 @@ variable "kind" {
     condition     = contains(["Linux", "Windows"], var.kind)
     error_message = "Kind must be \"Linux\" or \"Windows\"."
   }
-}
-
-variable "sku_name" {
-  description = "The SKU name for this App Service plan."
-  type        = string
-  default     = "Y1"
 }
 
 variable "application_insights_key" {
