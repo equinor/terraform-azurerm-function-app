@@ -22,7 +22,7 @@ module "log_analytics" {
 module "app_service" {
   source = "github.com/equinor/terraform-azurerm-app-service?ref=v1.0.0"
 
-  plan_name           = "plan-${random_id.example.hex}"
+  plan_name           = "plan-${random_id.this.hex}"
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
 }
