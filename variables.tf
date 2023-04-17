@@ -3,16 +3,6 @@ variable "app_name" {
   type        = string
 }
 
-variable "app_service_plan_name" {
-  description = "The name of this App Service plan."
-  type        = string
-}
-
-variable "storage_account_name" {
-  description = "The name of this Storage account."
-  type        = string
-}
-
 variable "resource_group_name" {
   description = "The name of the resource group to create the resources in."
   type        = string
@@ -21,6 +11,22 @@ variable "resource_group_name" {
 variable "location" {
   description = "The location to create the resources in."
   type        = string
+}
+
+variable "app_service_plan_id" {
+  description = "The ID of the App Service plan to host this Function App on."
+  type        = string
+}
+
+variable "storage_account_name" {
+  description = "The name of the Storage account to use for this Function App."
+  type        = string
+}
+
+variable "storage_account_key" {
+  description = "The shared key of the Storage account to use for this Function App."
+  type        = string
+  sensitive   = true
 }
 
 variable "log_analytics_workspace_id" {
