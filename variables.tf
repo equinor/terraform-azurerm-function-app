@@ -47,7 +47,7 @@ variable "diagnostic_setting_name" {
 }
 
 variable "diagnostic_setting_enabled_log_categories" {
-  description = "the name of this diagnostic setting"
+  description = "A list of log categories to be enabled for this diagnostic setting."
   type        = list(string)
 
   default = ["FunctionAppLogs"]
