@@ -34,6 +34,25 @@ variable "log_analytics_workspace_id" {
   type        = string
 }
 
+variable "log_analytics_destination_type" {
+  description = "The type of log analytics destination to use for this Log Analytics Workspace."
+  type        = string
+  default     = null
+}
+
+variable "diagnostic_setting_name" {
+  description = "the name of this diagnostic setting."
+  type        = string
+  default     = null
+}
+
+variable "diagnostic_setting_enabled_log_categories" {
+  description = "the name of this diagnostic setting"
+  type        = list(string)
+
+  default = ["FunctionAppLogs"]
+}
+
 variable "kind" {
   description = "The kind of Function App to create."
   type        = string

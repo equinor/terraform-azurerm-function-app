@@ -123,12 +123,17 @@ resource "azurerm_windows_function_app" "this" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {
-  name                       = "audit-logs"
-  target_resource_id         = local.function_app.id
-  log_analytics_workspace_id = var.log_analytics_workspace_id
+  name                           = "audit-logs"
+  target_resource_id             = local.function_app.id
+  log_analytics_workspace_id     = var.log_analytics_workspace_id
+  log_analytics_destination_type = var.log_analytics_destination_type
 
-  enabled_log {
-    category = "FunctionAppLogs"
+  dynamic "enabled_log" {
+    for_each = toset(var.diagnostic_setting_enabled_log_categories)
+
+    content {
+      category = enabled_log.value
+    }
   }
 
   metric {
