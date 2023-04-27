@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v2.0.0...v2.1.0) (2023-04-27)
+
+
+### Features
+
+* set diagnostic setting enabled log categories ([#6](https://github.com/equinor/terraform-azurerm-function-app/issues/6)) ([412bf2a](https://github.com/equinor/terraform-azurerm-function-app/commit/412bf2a4e10217502e72ae74eaa191576ad874c0))
+
 ## [2.0.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v1.0.0...v2.0.0) (2023-04-17)
 
 
