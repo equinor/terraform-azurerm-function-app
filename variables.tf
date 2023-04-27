@@ -41,7 +41,7 @@ variable "log_analytics_destination_type" {
 }
 
 variable "diagnostic_setting_name" {
-  description = "the name of this diagnostic setting."
+  description = "The name of this diagnostic setting."
   type        = string
   default     = "audit-logs"
 }
