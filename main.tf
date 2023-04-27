@@ -123,7 +123,7 @@ resource "azurerm_windows_function_app" "this" {
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {
-  name                           = "audit-logs"
+  name                           = var.diagnostic_setting_name
   target_resource_id             = local.function_app.id
   log_analytics_workspace_id     = var.log_analytics_workspace_id
   log_analytics_destination_type = var.log_analytics_destination_type
