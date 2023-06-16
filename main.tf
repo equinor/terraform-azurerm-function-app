@@ -50,6 +50,8 @@ resource "azurerm_linux_function_app" "this" {
     }
   }
 
+  tags = var.tags
+
   lifecycle {
     ignore_changes = [
       # Configure app settings during application deployment
@@ -108,6 +110,8 @@ resource "azurerm_windows_function_app" "this" {
       identity_ids = identity.value["identity_ids"]
     }
   }
+
+  tags = var.tags
 
   lifecycle {
     ignore_changes = [
