@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v2.1.0...v2.1.1) (2023-06-16)
+
+
+### Bug Fixes
+
+* set tags ([#8](https://github.com/equinor/terraform-azurerm-function-app/issues/8)) ([9e05caf](https://github.com/equinor/terraform-azurerm-function-app/commit/9e05caf30107d1c6da39c188ce7676eb726bf7c2))
+
 ## [2.1.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v2.0.0...v2.1.0) (2023-04-27)
 
 
