@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.0.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v2.1.2...v3.0.0) (2023-07-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove variable `identity`, add variables `system_assigned_identity_enabled` and `identity_ids`.
+
+### Code Refactoring
+
+* simplify identity configuration ([#12](https://github.com/equinor/terraform-azurerm-function-app/issues/12)) ([811d911](https://github.com/equinor/terraform-azurerm-function-app/commit/811d911b319c0754227a3f231c5a24cddca11b1e))
+
 ## [2.1.2](https://github.com/equinor/terraform-azurerm-function-app/compare/v2.1.1...v2.1.2) (2023-07-26)
 
 
