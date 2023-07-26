@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.2](https://github.com/equinor/terraform-azurerm-function-app/compare/v2.1.1...v2.1.2) (2023-07-26)
+
+
+### Bug Fixes
+
+* don't specify Log Analytics destination type ([#10](https://github.com/equinor/terraform-azurerm-function-app/issues/10)) ([b983a60](https://github.com/equinor/terraform-azurerm-function-app/commit/b983a60e4379abfe9afd1e2a57d677baee21b6e1))
+
 ## [2.1.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v2.1.0...v2.1.1) (2023-06-16)
 
 
