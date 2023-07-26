@@ -34,12 +34,6 @@ variable "log_analytics_workspace_id" {
   type        = string
 }
 
-variable "log_analytics_destination_type" {
-  description = "The type of log analytics destination to use for this Log Analytics Workspace."
-  type        = string
-  default     = null
-}
-
 variable "diagnostic_setting_name" {
   description = "The name of this diagnostic setting."
   type        = string
