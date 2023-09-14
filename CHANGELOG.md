@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.0.0...v3.1.0) (2023-09-14)
+
+
+### Features
+
+* configure vNet integration ([#15](https://github.com/equinor/terraform-azurerm-function-app/issues/15)) ([a037a71](https://github.com/equinor/terraform-azurerm-function-app/commit/a037a71dbbf1729167bfec7a217ecdbce5bd307a))
+
 ## [3.0.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v2.1.2...v3.0.0) (2023-07-26)
 
 
