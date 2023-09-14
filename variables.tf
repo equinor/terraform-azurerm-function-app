@@ -81,6 +81,18 @@ variable "key_vault_reference_identity_id" {
   default     = null
 }
 
+variable "virtual_network_subnet_id" {
+  description = "The ID of the virtual network subnet to use for vNet integration."
+  type        = string
+  default     = null
+}
+
+variable "vnet_route_all_enabled" {
+  description = "Should all outbound traffic have NAT Gateways, Network Security Groups and User Defined Routes applied?"
+  type        = bool
+  default     = false
+}
+
 variable "application_stack" {
   description = "The application stack to configure for this Function App."
 
