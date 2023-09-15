@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.2](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.1.1...v3.1.2) (2023-09-15)
+
+
+### Bug Fixes
+
+* route all outbound traffic through vNet ([#19](https://github.com/equinor/terraform-azurerm-function-app/issues/19)) ([c63a9fc](https://github.com/equinor/terraform-azurerm-function-app/commit/c63a9fcbfc0935d331ac4368a82a3afab52a3d06))
+
 ## [3.1.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.1.0...v3.1.1) (2023-09-15)
 
 
