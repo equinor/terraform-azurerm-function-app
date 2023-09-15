@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.1.0...v3.1.1) (2023-09-15)
+
+
+### Bug Fixes
+
+* configure vNet configuration for Windows app ([#17](https://github.com/equinor/terraform-azurerm-function-app/issues/17)) ([952c426](https://github.com/equinor/terraform-azurerm-function-app/commit/952c4265a5ea65cd09b500b04ac311e712f84c91))
+
 ## [3.1.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.0.0...v3.1.0) (2023-09-14)
 
 
