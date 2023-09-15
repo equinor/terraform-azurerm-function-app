@@ -92,6 +92,8 @@ resource "azurerm_windows_function_app" "this" {
 
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
+  virtual_network_subnet_id = var.virtual_network_subnet_id
+
   site_config {
     application_insights_key               = var.application_insights_key
     application_insights_connection_string = var.application_insights_connection_string
