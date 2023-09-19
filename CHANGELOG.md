@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.3.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.2.1...v3.3.0) (2023-09-19)
+
+
+### Features
+
+* set pre-warmed instance count ([#27](https://github.com/equinor/terraform-azurerm-function-app/issues/27)) ([0711d2a](https://github.com/equinor/terraform-azurerm-function-app/commit/0711d2aa5b17459503b3fb511e0835622165551f))
+
 ## [3.2.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.2.0...v3.2.1) (2023-09-19)
 
 
