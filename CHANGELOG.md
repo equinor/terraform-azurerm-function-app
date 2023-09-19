@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.2.0...v3.2.1) (2023-09-19)
+
+
+### Bug Fixes
+
+* remove unused variable `sku_name` ([#23](https://github.com/equinor/terraform-azurerm-function-app/issues/23)) ([5609cde](https://github.com/equinor/terraform-azurerm-function-app/commit/5609cdea0955ee91851907037af1c71844bf8b00))
+
 ## [3.2.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.1.2...v3.2.0) (2023-09-19)
 
 
