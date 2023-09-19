@@ -19,22 +19,23 @@ module "log_analytics" {
   location            = azurerm_resource_group.this.location
 }
 
-module "app_service" {
-  source = "github.com/equinor/terraform-azurerm-app-service?ref=v1.0.0"
-
-  plan_name           = "plan-${random_id.this.hex}"
+resource "azurerm_service_plan" "this" {
+  name                = "plan-${random_id.this.hex}"
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
+  os_type             = "Windows"
+  sku_name            = "Y1"
 }
 
 module "storage" {
-  source = "github.com/equinor/terraform-azurerm-storage?ref=v10.3.0"
+  source = "github.com/equinor/terraform-azurerm-storage?ref=v12.1.0"
 
-  account_name               = "st${random_id.this.hex}"
-  resource_group_name        = azurerm_resource_group.this.name
-  location                   = azurerm_resource_group.this.location
-  log_analytics_workspace_id = module.log_analytics.workspace_id
-  shared_access_key_enabled  = true
+  account_name                 = "st${random_id.this.hex}"
+  resource_group_name          = azurerm_resource_group.this.name
+  location                     = azurerm_resource_group.this.location
+  log_analytics_workspace_id   = module.log_analytics.workspace_id
+  shared_access_key_enabled    = true
+  network_rules_default_action = "Allow"
 }
 
 module "function_app" {
@@ -44,7 +45,7 @@ module "function_app" {
   app_name                   = "func-${random_id.this.hex}"
   resource_group_name        = azurerm_resource_group.this.name
   location                   = azurerm_resource_group.this.location
-  app_service_plan_id        = module.app_service.plan_id
+  app_service_plan_id        = azurerm_service_plan.this.id
   storage_account_name       = module.storage.account_name
   storage_account_key        = module.storage.primary_access_key
   log_analytics_workspace_id = module.log_analytics.workspace_id
