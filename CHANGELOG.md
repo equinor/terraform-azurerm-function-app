@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.2.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.1.2...v3.2.0) (2023-09-19)
+
+
+### Features
+
+* set minimum number of elastic instances ([#21](https://github.com/equinor/terraform-azurerm-function-app/issues/21)) ([c9fa4ca](https://github.com/equinor/terraform-azurerm-function-app/commit/c9fa4ca399346054c2597e61a44373f19c4fd590))
+
 ## [3.1.2](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.1.1...v3.1.2) (2023-09-15)
 
 
