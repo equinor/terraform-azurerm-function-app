@@ -33,6 +33,7 @@ resource "azurerm_linux_function_app" "this" {
     application_insights_key               = var.application_insights_key
     application_insights_connection_string = var.application_insights_connection_string
     vnet_route_all_enabled                 = var.vnet_route_all_enabled
+    elastic_instance_minimum               = var.elastic_instance_minimum
 
     dynamic "application_stack" {
       for_each = var.application_stack != null ? [var.application_stack] : []
@@ -98,6 +99,7 @@ resource "azurerm_windows_function_app" "this" {
     application_insights_key               = var.application_insights_key
     application_insights_connection_string = var.application_insights_connection_string
     vnet_route_all_enabled                 = var.vnet_route_all_enabled
+    elastic_instance_minimum               = var.elastic_instance_minimum
 
     dynamic "application_stack" {
       for_each = var.application_stack != null ? [var.application_stack] : []
