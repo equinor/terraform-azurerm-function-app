@@ -93,6 +93,12 @@ variable "vnet_route_all_enabled" {
   default     = false
 }
 
+variable "elastic_instance_minimum" {
+  description = "The minimum number of instances for this Function App. Only supported for Elastic Premium plans."
+  type        = number
+  default     = 1
+}
+
 variable "application_stack" {
   description = "The application stack to configure for this Function App."
 
