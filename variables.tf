@@ -93,6 +93,12 @@ variable "elastic_instance_minimum" {
   default     = 1
 }
 
+variable "pre_warmed_instance_count" {
+  description = "The number of pre-warmed instances for this Function App. Only supported for Elastic Premium plans."
+  type        = number
+  default     = 1
+}
+
 variable "application_stack" {
   description = "The application stack to configure for this Function App."
 
