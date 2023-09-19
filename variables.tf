@@ -57,12 +57,6 @@ variable "kind" {
   }
 }
 
-variable "sku_name" {
-  description = "The SKU name for this App Service plan."
-  type        = string
-  default     = "Y1"
-}
-
 variable "application_insights_key" {
   description = "The instrumentation key of the Application Insights component to configure for this Function App."
   type        = string
