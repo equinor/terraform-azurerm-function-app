@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.3.0...v3.4.0) (2023-09-20)
+
+
+### Features
+
+* set app scale limit ([#29](https://github.com/equinor/terraform-azurerm-function-app/issues/29)) ([86dc1b2](https://github.com/equinor/terraform-azurerm-function-app/commit/86dc1b2df35ef0c66fa2893a89cdd8ec9a115502))
+
 ## [3.3.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.2.1...v3.3.0) (2023-09-19)
 
 
