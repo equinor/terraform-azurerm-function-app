@@ -35,6 +35,7 @@ resource "azurerm_linux_function_app" "this" {
     vnet_route_all_enabled                 = var.vnet_route_all_enabled
     elastic_instance_minimum               = var.elastic_instance_minimum
     pre_warmed_instance_count              = var.pre_warmed_instance_count
+    app_scale_limit                        = var.app_scale_limit
 
     dynamic "application_stack" {
       for_each = var.application_stack != null ? [var.application_stack] : []
@@ -102,6 +103,7 @@ resource "azurerm_windows_function_app" "this" {
     vnet_route_all_enabled                 = var.vnet_route_all_enabled
     elastic_instance_minimum               = var.elastic_instance_minimum
     pre_warmed_instance_count              = var.pre_warmed_instance_count
+    app_scale_limit                        = var.app_scale_limit
 
     dynamic "application_stack" {
       for_each = var.application_stack != null ? [var.application_stack] : []

@@ -99,6 +99,12 @@ variable "pre_warmed_instance_count" {
   default     = 1
 }
 
+variable "app_scale_limit" {
+  description = "The number of instanstes this Function App can scale to. Only supported for Consumption and Premium plans."
+  type        = number
+  default     = 1
+}
+
 variable "application_stack" {
   description = "The application stack to configure for this Function App."
 
