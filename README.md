@@ -4,3 +4,8 @@
 [![Equinor Terraform Baseline](https://img.shields.io/badge/Equinor%20Terraform%20Baseline-1.0.0-blueviolet)](https://github.com/equinor/terraform-baseline)
 
 Terraform module which creates Azure Function App resources.
+
+## Prerequisites
+
+- Azure role `Contributor` at the resource group scope.
+- Azure role `Owner` at the Storage account scope.
