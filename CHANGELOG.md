@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.4.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.4.0...v3.4.1) (2023-09-22)
+
+
+### Bug Fixes
+
+* set correct .NET runtime version ([#31](https://github.com/equinor/terraform-azurerm-function-app/issues/31)) ([6a57927](https://github.com/equinor/terraform-azurerm-function-app/commit/6a5792753b35f4216d5c298fce9def95d4748b41))
+
 ## [3.4.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.3.0...v3.4.0) (2023-09-20)
 
 
