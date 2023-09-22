@@ -110,7 +110,7 @@ variable "application_stack" {
 
   type = object({
     dotnet_version              = optional(string)
-    use_dotnet_isolated_runtime = optional(bool)
+    use_dotnet_isolated_runtime = optional(bool, false)
     java_version                = optional(string)
     node_version                = optional(string)
     python_version              = optional(string)
