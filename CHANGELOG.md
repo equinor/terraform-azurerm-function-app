@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.5.0...v3.5.1) (2023-09-27)
+
+
+### Bug Fixes
+
+* user-assigned identities not being assigned ([#38](https://github.com/equinor/terraform-azurerm-function-app/issues/38)) ([81466d8](https://github.com/equinor/terraform-azurerm-function-app/commit/81466d89926e10811e8a471ce45ab4075c11b135)), closes [#37](https://github.com/equinor/terraform-azurerm-function-app/issues/37)
+
 ## [3.5.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.4.1...v3.5.0) (2023-09-25)
 
 
