@@ -45,3 +45,7 @@ Terraform module which creates Azure Function App resources.
     ```console
     go test -timeout 60m
     ```
+
+## Contributing
+
+See [Contributing guidelines](CONTRIBUTING.md).
