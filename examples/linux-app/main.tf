@@ -29,6 +29,7 @@ module "storage" {
   resource_group_name          = var.resource_group_name
   location                     = var.location
   log_analytics_workspace_id   = module.log_analytics.workspace_id
+  account_replication_type     = "LRS"
   shared_access_key_enabled    = true
   network_rules_default_action = "Allow"
 }
