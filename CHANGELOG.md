@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.2](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.5.1...v3.5.2) (2023-12-20)
+
+
+### Bug Fixes
+
+* remove diagnostic setting retention policies ([#48](https://github.com/equinor/terraform-azurerm-function-app/issues/48)) ([f612009](https://github.com/equinor/terraform-azurerm-function-app/commit/f6120094ceb43ab7182043b318113cf25dd2d2f3))
+
 ## [3.5.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.5.0...v3.5.1) (2023-09-27)
 
 
