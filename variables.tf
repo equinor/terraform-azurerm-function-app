@@ -46,6 +46,12 @@ variable "diagnostic_setting_enabled_log_categories" {
   default     = ["FunctionAppLogs"]
 }
 
+variable "diagnostic_setting_enabled_metric_categories" {
+  description = "A list of metric categories to be enabled for this diagnostic setting."
+  type        = list(string)
+  default     = []
+}
+
 variable "kind" {
   description = "The kind of Function App to create."
   type        = string
