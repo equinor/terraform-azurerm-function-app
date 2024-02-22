@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.6.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.5.2...v3.6.0) (2024-02-22)
+
+
+### Features
+
+* variable for diagnostic setting metric ([#53](https://github.com/equinor/terraform-azurerm-function-app/issues/53)) ([809263b](https://github.com/equinor/terraform-azurerm-function-app/commit/809263bd88a17f7e43188370148f19c626082816))
+
 ## [3.5.2](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.5.1...v3.5.2) (2023-12-20)
 
 
