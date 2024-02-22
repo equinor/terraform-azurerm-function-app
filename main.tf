@@ -11,7 +11,6 @@ locals {
   identity_type = join(", ", compact([var.system_assigned_identity_enabled ? "SystemAssigned" : "", length(local.identity_ids) > 0 ? "UserAssigned" : ""]))
 
   diagnostic_setting_metric_categories = ["AllMetrics"]
-
 }
 
 resource "azurerm_linux_function_app" "this" {
