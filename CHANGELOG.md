@@ -1,5 +1,16 @@
 # Changelog
 
+## [4.0.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.6.0...v4.0.0) (2024-03-19)
+
+
+### ⚠ BREAKING CHANGES
+
+* split variable `application_stack` object properties into variables `application_stack_dotnet_version`, `application_stack_use_dotnet_isolated_runtime`, `application_stack_java_version`, `application_stack_node_version`, `application_stack_python_version` and `application_stack_powershell_core_version`. Option to set application stack `use_custom_runtime` has been removed.
+
+### Features
+
+* split application stack properties into variables ([#56](https://github.com/equinor/terraform-azurerm-function-app/issues/56)) ([ca18c23](https://github.com/equinor/terraform-azurerm-function-app/commit/ca18c23e2f297762d09ab61cada8aebcbe7ff71f))
+
 ## [3.6.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.5.2...v3.6.0) (2024-02-22)
 
 
