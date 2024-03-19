@@ -112,6 +112,8 @@ resource "azurerm_linux_function_app" "this" {
       tags["hidden-link: /app-insights-resource-id"]
     ]
 
+    # Precondition to verify only one or null application stacks are defined.
+    # Multiple defined stacks creates a conflict.
     precondition {
       condition = length(compact([
         var.application_stack_dotnet_version,
@@ -211,6 +213,8 @@ resource "azurerm_windows_function_app" "this" {
       tags["hidden-link: /app-insights-resource-id"]
     ]
 
+    # Precondition to verify only one or null application stacks are defined.
+    # Multiple defined stacks creates a conflict.
     precondition {
       condition = length(compact([
         var.application_stack_dotnet_version,

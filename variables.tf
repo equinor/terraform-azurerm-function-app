@@ -111,24 +111,8 @@ variable "app_scale_limit" {
   default     = 1
 }
 
-# variable "application_stack" {
-#   description = "The application stack to configure for this Function App."
-
-#   type = object({
-#     dotnet_version              = optional(string)
-#     use_dotnet_isolated_runtime = optional(bool, false)
-#     java_version                = optional(string)
-#     node_version                = optional(string)
-#     python_version              = optional(string)
-#     powershell_core_version     = optional(string)
-#     use_custom_runtime          = optional(bool)
-#   })
-
-#   default = null
-# }
-
 variable "application_stack_dotnet_version" {
-  description = "The version of .NET to use for this Fuction App."
+  description = "The version of .NET to use for this Function App."
   type        = string
   default     = null
 }
@@ -140,25 +124,25 @@ variable "application_stack_use_dotnet_isolated_runtime" {
 }
 
 variable "application_stack_java_version" {
-  description = "The version of Java to use for this Fuction App."
+  description = "The version of Java to use for this Function App."
   type        = string
   default     = null
 }
 
 variable "application_stack_node_version" {
-  description = "The version of Node to use for this Fuction App."
+  description = "The version of Node.js to use for this Function App."
   type        = string
   default     = null
 }
 
 variable "application_stack_python_version" {
-  description = "The version of Puthon to use for this Fuction App."
+  description = "The version of Python to use for this Function App."
   type        = string
   default     = null
 }
 
 variable "application_stack_powershell_core_version" {
-  description = "The version of PowerShell Core to use for this Fuction App."
+  description = "The version of PowerShell Core to use for this Function App."
   type        = string
   default     = null
 }
