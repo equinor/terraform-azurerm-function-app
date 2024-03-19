@@ -11,6 +11,12 @@ locals {
   identity_type = join(", ", compact([var.system_assigned_identity_enabled ? "SystemAssigned" : "", length(local.identity_ids) > 0 ? "UserAssigned" : ""]))
 
   diagnostic_setting_metric_categories = ["AllMetrics"]
+
+  dotnet_application_stack          = var.application_stack_dotnet_version != null ? [0] : []
+  java_application_stack            = var.application_stack_java_version != null ? [0] : []
+  node_application_stack            = var.application_stack_node_version != null ? [0] : []
+  python_application_stack          = var.application_stack_python_version != null ? [0] : []
+  powershell_core_application_stack = var.application_stack_powershell_core_version != null ? [0] : []
 }
 
 resource "azurerm_linux_function_app" "this" {
@@ -43,16 +49,43 @@ resource "azurerm_linux_function_app" "this" {
     app_scale_limit                        = var.app_scale_limit
 
     dynamic "application_stack" {
-      for_each = var.application_stack != null ? [var.application_stack] : []
+      for_each = local.dotnet_application_stack
 
       content {
-        dotnet_version              = application_stack.value["dotnet_version"]
-        use_dotnet_isolated_runtime = application_stack.value["use_dotnet_isolated_runtime"]
-        java_version                = application_stack.value["java_version"]
-        node_version                = application_stack.value["node_version"]
-        python_version              = application_stack.value["python_version"]
-        powershell_core_version     = application_stack.value["powershell_core_version"]
-        use_custom_runtime          = application_stack.value["use_custom_runtime"]
+        dotnet_version              = var.application_stack_dotnet_version
+        use_dotnet_isolated_runtime = var.application_stack_use_dotnet_isolated_runtime
+      }
+    }
+
+    dynamic "application_stack" {
+      for_each = local.java_application_stack
+
+      content {
+        java_version = var.application_stack_java_version
+      }
+    }
+
+    dynamic "application_stack" {
+      for_each = local.node_application_stack
+
+      content {
+        node_version = var.application_stack_node_version
+      }
+    }
+
+    dynamic "application_stack" {
+      for_each = local.python_application_stack
+
+      content {
+        python_version = var.application_stack_python_version
+      }
+    }
+
+    dynamic "application_stack" {
+      for_each = local.powershell_core_application_stack
+
+      content {
+        powershell_core_version = var.application_stack_powershell_core_version
       }
     }
   }
@@ -78,6 +111,20 @@ resource "azurerm_linux_function_app" "this" {
       tags["hidden-link: /app-insights-conn-string"],
       tags["hidden-link: /app-insights-resource-id"]
     ]
+
+    # Precondition to verify only one or null application stacks are defined.
+    # Multiple defined stacks creates a conflict.
+    precondition {
+      condition = length(compact([
+        var.application_stack_dotnet_version,
+        var.application_stack_java_version,
+        var.application_stack_node_version,
+        var.application_stack_python_version,
+        var.application_stack_powershell_core_version
+      ])) < 2
+
+      error_message = "Multiple application stacks are defined. Number of application stacks defined can only be one or null."
+    }
   }
 }
 
@@ -111,15 +158,35 @@ resource "azurerm_windows_function_app" "this" {
     app_scale_limit                        = var.app_scale_limit
 
     dynamic "application_stack" {
-      for_each = var.application_stack != null ? [var.application_stack] : []
+      for_each = local.dotnet_application_stack
 
       content {
-        dotnet_version              = application_stack.value["dotnet_version"]
-        use_dotnet_isolated_runtime = application_stack.value["use_dotnet_isolated_runtime"]
-        java_version                = application_stack.value["java_version"]
-        node_version                = application_stack.value["node_version"]
-        powershell_core_version     = application_stack.value["powershell_core_version"]
-        use_custom_runtime          = application_stack.value["use_custom_runtime"]
+        dotnet_version              = var.application_stack_dotnet_version
+        use_dotnet_isolated_runtime = var.application_stack_use_dotnet_isolated_runtime
+      }
+    }
+
+    dynamic "application_stack" {
+      for_each = local.java_application_stack
+
+      content {
+        java_version = var.application_stack_java_version
+      }
+    }
+
+    dynamic "application_stack" {
+      for_each = local.node_application_stack
+
+      content {
+        node_version = var.application_stack_node_version
+      }
+    }
+
+    dynamic "application_stack" {
+      for_each = local.powershell_core_application_stack
+
+      content {
+        powershell_core_version = var.application_stack_powershell_core_version
       }
     }
   }
@@ -145,6 +212,19 @@ resource "azurerm_windows_function_app" "this" {
       tags["hidden-link: /app-insights-conn-string"],
       tags["hidden-link: /app-insights-resource-id"]
     ]
+
+    # Precondition to verify only one or null application stacks are defined.
+    # Multiple defined stacks creates a conflict.
+    precondition {
+      condition = length(compact([
+        var.application_stack_dotnet_version,
+        var.application_stack_java_version,
+        var.application_stack_node_version,
+        var.application_stack_powershell_core_version
+      ])) < 2
+
+      error_message = "Multiple application stacks are defined. Number of application stacks defined can only be one or null."
+    }
   }
 }
 
