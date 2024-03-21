@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v4.0.0...v4.1.0) (2024-03-21)
+
+
+### Features
+
+* use 32-bit worker worker process ([#58](https://github.com/equinor/terraform-azurerm-function-app/issues/58)) ([90afbe0](https://github.com/equinor/terraform-azurerm-function-app/commit/90afbe0e3de2b17bc2b79738543b6a723decd346))
+
 ## [4.0.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v3.6.0...v4.0.0) (2024-03-19)
 
 
