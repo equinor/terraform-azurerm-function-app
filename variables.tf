@@ -147,6 +147,12 @@ variable "application_stack_powershell_core_version" {
   default     = null
 }
 
+variable "use_32_bit_worker" {
+  description = "Should this Function App use a 32-bit worker process?"
+  type        = bool
+  default     = true
+}
+
 variable "system_assigned_identity_enabled" {
   description = "Should the system-assigned identity be enabled for this Web App?"
   type        = bool

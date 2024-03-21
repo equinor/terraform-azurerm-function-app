@@ -47,6 +47,7 @@ resource "azurerm_linux_function_app" "this" {
     elastic_instance_minimum               = var.elastic_instance_minimum
     pre_warmed_instance_count              = var.pre_warmed_instance_count
     app_scale_limit                        = var.app_scale_limit
+    use_32_bit_worker                      = var.use_32_bit_worker
 
     dynamic "application_stack" {
       for_each = local.dotnet_application_stack
@@ -156,6 +157,7 @@ resource "azurerm_windows_function_app" "this" {
     elastic_instance_minimum               = var.elastic_instance_minimum
     pre_warmed_instance_count              = var.pre_warmed_instance_count
     app_scale_limit                        = var.app_scale_limit
+    use_32_bit_worker                      = var.use_32_bit_worker
 
     dynamic "application_stack" {
       for_each = local.dotnet_application_stack
