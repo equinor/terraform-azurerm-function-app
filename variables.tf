@@ -28,6 +28,27 @@ variable "log_analytics_workspace_id" {
   type        = string
 }
 
+variable "app_settings" {
+  description = "A map of app settings to be configured for this Function App."
+  type        = map(string)
+  default     = {}
+  nullable    = false
+
+  validation {
+    condition     = length(setintersection(["AzureWebJobsDashboard__accountName", "AzureWebJobsStorage__accountName"], keys(var.app_settings))) == 0
+    error_message = "Storage settings (\"AzureWebJobs*\") must be configured using \"storage_account_id\"."
+  }
+
+  validation {
+    condition     = length(setintersection(["FUNCTIONS_EXTENSION_VERSION"], keys(var.app_settings))) == 0
+    error_message = "Functions extension version (\"FUNCTIONS_EXTENSION_VERSION*\") must be configured using \"functions_extension_version\"."
+  }
+}
+
+variable "functions_extension_version" {
+  default = "~4"
+}
+
 variable "diagnostic_setting_name" {
   description = "The name of this diagnostic setting."
   type        = string
