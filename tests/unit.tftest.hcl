@@ -14,8 +14,7 @@ run "linux_app" {
     resource_group_name        = run.setup_tests.resource_group_name
     location                   = run.setup_tests.location
     app_service_plan_id        = run.setup_tests.app_service_plan_id
-    storage_account_name       = run.setup_tests.storage_account_name
-    storage_account_key        = run.setup_tests.storage_account_key
+    storage_account_id         = run.setup_tests.storage_account_id
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
   }
 
@@ -39,8 +38,7 @@ run "windows_app" {
     location                   = run.setup_tests.location
     kind                       = "Windows"
     app_service_plan_id        = run.setup_tests.app_service_plan_id
-    storage_account_name       = run.setup_tests.storage_account_name
-    storage_account_key        = run.setup_tests.storage_account_key
+    storage_account_id         = run.setup_tests.storage_account_id
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
   }
 
