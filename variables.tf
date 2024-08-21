@@ -36,17 +36,20 @@ variable "app_settings" {
 
   validation {
     condition     = length(setintersection(["AzureWebJobsDashboard__accountName", "AzureWebJobsStorage__accountName"], keys(var.app_settings))) == 0
-    error_message = "Storage settings (\"AzureWebJobs*\") must be configured using \"storage_account_id\"."
+    error_message = "Storage account must be configured using the \"storage_account_id\" variable."
   }
 
   validation {
     condition     = length(setintersection(["FUNCTIONS_EXTENSION_VERSION"], keys(var.app_settings))) == 0
-    error_message = "Functions extension version (\"FUNCTIONS_EXTENSION_VERSION*\") must be configured using \"functions_extension_version\"."
+    error_message = "Functions extension version must be configured using the \"functions_extension_version\" variable."
   }
 }
 
 variable "functions_extension_version" {
-  default = "~4"
+  description = "Which extension version to use for this Function App."
+  type        = string
+  default     = "~4"
+  nullable    = false
 }
 
 variable "diagnostic_setting_name" {
