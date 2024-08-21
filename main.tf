@@ -2,13 +2,11 @@ locals {
   is_windows   = var.kind == "Windows"
   function_app = local.is_windows ? azurerm_windows_function_app.this[0] : azurerm_linux_function_app.this[0]
 
+  # TODO(@hknutsen): use provider function instead
+  storage_account_name = split("/", var.storage_account_id)[8]
+
   # Auto assign Key Vault reference identity
   identity_ids = concat(compact([var.key_vault_reference_identity_id]), var.identity_ids)
-
-  # If system_assigned_identity_enabled is true, value is "SystemAssigned".
-  # If identity_ids is non-empty, value is "UserAssigned".
-  # If system_assigned_identity_enabled is true and identity_ids is non-empty, value is "SystemAssigned, UserAssigned".
-  identity_type = join(", ", compact([var.system_assigned_identity_enabled ? "SystemAssigned" : "", length(local.identity_ids) > 0 ? "UserAssigned" : ""]))
 
   diagnostic_setting_metric_categories = ["AllMetrics"]
 
@@ -27,8 +25,9 @@ resource "azurerm_linux_function_app" "this" {
   location            = var.location
   service_plan_id     = var.app_service_plan_id
 
-  storage_account_name       = var.storage_account_name
-  storage_account_access_key = var.storage_account_key
+  storage_account_name          = local.storage_account_name
+  storage_account_access_key    = null # Use managed identity instead
+  storage_uses_managed_identity = true
 
   # Enforced by Equinor policy
   https_only = true
@@ -91,13 +90,9 @@ resource "azurerm_linux_function_app" "this" {
     }
   }
 
-  dynamic "identity" {
-    for_each = local.identity_type != "" ? [1] : []
-
-    content {
-      type         = local.identity_type
-      identity_ids = local.identity_ids
-    }
+  identity {
+    type         = length(var.identity_ids) > 0 ? "SystemAssigned, UserAssigned" : "SystemAssigned"
+    identity_ids = local.identity_ids
   }
 
   tags = var.tags
@@ -137,8 +132,9 @@ resource "azurerm_windows_function_app" "this" {
   location            = var.location
   service_plan_id     = var.app_service_plan_id
 
-  storage_account_name       = var.storage_account_name
-  storage_account_access_key = var.storage_account_key
+  storage_account_name          = local.storage_account_name
+  storage_account_access_key    = null # Use managed identity instead
+  storage_uses_managed_identity = true
 
   # Enforced by Equinor policy
   https_only = true
@@ -193,13 +189,9 @@ resource "azurerm_windows_function_app" "this" {
     }
   }
 
-  dynamic "identity" {
-    for_each = local.identity_type != "" ? [1] : []
-
-    content {
-      type         = local.identity_type
-      identity_ids = local.identity_ids
-    }
+  identity {
+    type         = length(var.identity_ids) > 0 ? "SystemAssigned, UserAssigned" : "SystemAssigned"
+    identity_ids = local.identity_ids
   }
 
   tags = var.tags
@@ -228,6 +220,13 @@ resource "azurerm_windows_function_app" "this" {
       error_message = "Multiple application stacks are defined. Number of application stacks defined can only be one or null."
     }
   }
+}
+
+# Ref: https://github.com/Azure-Samples/functions-storage-managed-identity
+resource "azurerm_role_assignment" "this" {
+  scope                = var.storage_account_id
+  role_definition_name = "Storage Blob Data Contributor"
+  principal_id         = local.function_app.identity[0].principal_id
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {
