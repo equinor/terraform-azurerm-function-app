@@ -18,15 +18,9 @@ variable "app_service_plan_id" {
   type        = string
 }
 
-variable "storage_account_name" {
-  description = "The name of the Storage account to use for this Function App."
+variable "storage_account_id" {
+  description = "The ID of the Storage account to connect to this Function App."
   type        = string
-}
-
-variable "storage_account_key" {
-  description = "The shared key of the Storage account to use for this Function App."
-  type        = string
-  sensitive   = true
 }
 
 variable "log_analytics_workspace_id" {
@@ -151,12 +145,6 @@ variable "use_32_bit_worker" {
   description = "Should this Function App use a 32-bit worker process?"
   type        = bool
   default     = true
-}
-
-variable "system_assigned_identity_enabled" {
-  description = "Should the system-assigned identity be enabled for this Web App?"
-  type        = bool
-  default     = false
 }
 
 variable "identity_ids" {

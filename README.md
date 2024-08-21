@@ -6,6 +6,11 @@
 
 Terraform module which creates Azure Function App resources.
 
+## Prerequisites
+
+- Azure role `Contributor` at the resource group scope.
+- Azure role `Owner` at the Storage account scope.
+
 ## Development
 
 1. Read [this document](https://code.visualstudio.com/docs/devcontainers/containers).

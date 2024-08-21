@@ -1,4 +1,6 @@
 provider "azurerm" {
+  storage_use_azuread = true
+
   features {}
 }
 
@@ -23,13 +25,16 @@ resource "azurerm_service_plan" "this" {
 }
 
 module "storage" {
-  source = "github.com/equinor/terraform-azurerm-storage?ref=v12.1.0"
+  source  = "equinor/storage/azurerm"
+  version = "12.7.1"
 
-  account_name                 = "st${random_id.this.hex}"
-  resource_group_name          = var.resource_group_name
-  location                     = var.location
-  log_analytics_workspace_id   = module.log_analytics.workspace_id
-  shared_access_key_enabled    = true
+  account_name               = "st${random_id.this.hex}"
+  resource_group_name        = var.resource_group_name
+  location                   = var.location
+  log_analytics_workspace_id = module.log_analytics.workspace_id
+
+  # You can't use a network-secured Storage account when your Function App is hosted in an App Service plan with the "Y1" SKU.
+  # Ref: https://learn.microsoft.com/en-us/azure/azure-functions/storage-considerations?tabs=azure-cli#storage-account-requirements
   network_rules_default_action = "Allow"
 }
 
@@ -41,7 +46,6 @@ module "function_app" {
   resource_group_name        = var.resource_group_name
   location                   = var.location
   app_service_plan_id        = azurerm_service_plan.this.id
-  storage_account_name       = module.storage.account_name
-  storage_account_key        = module.storage.primary_access_key
+  storage_account_id         = module.storage.account_id
   log_analytics_workspace_id = module.log_analytics.workspace_id
 }
