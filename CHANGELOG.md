@@ -1,5 +1,22 @@
 # Changelog
 
+## [5.0.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v4.1.0...v5.0.0) (2024-08-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove variable `application_insights_key`. To migrate your project, use variable `application_insights_connection_string` instead.
+* public network access denied by default. To keep public network access allowed by default, set the value of variables `ip_restriction_default_action` and `scm_ip_restriction_default_action` to `"Allow"`.
+* changes to app settings will no longer be ignored. To migrate your project, configure app settings for your Function App using the new `app_settings` variable. Consider using App Configuration and Key Vault references to continue managing settings outside of Terraform.
+* remove variables `storage_account_name`, `storage_account_key` and `system_assigned_identity_enabled`. Add required variable `storage_account_id`.
+
+### Features
+
+* configure app settings ([#68](https://github.com/equinor/terraform-azurerm-function-app/issues/68)) ([9f6408c](https://github.com/equinor/terraform-azurerm-function-app/commit/9f6408c86f006ebdc86d6572f0cf4080c4c11e5a))
+* connect to Storage using RBAC ([#65](https://github.com/equinor/terraform-azurerm-function-app/issues/65)) ([1d97892](https://github.com/equinor/terraform-azurerm-function-app/commit/1d9789227a3c8094c7e28d8450eaa76390644ffb))
+* deny public network access by default ([#69](https://github.com/equinor/terraform-azurerm-function-app/issues/69)) ([bce2065](https://github.com/equinor/terraform-azurerm-function-app/commit/bce2065f16cac92bb1c6cafa0dd66a0cf8b5df9e))
+* remove deprecated App Insights instrumentation key ([#71](https://github.com/equinor/terraform-azurerm-function-app/issues/71)) ([43e401f](https://github.com/equinor/terraform-azurerm-function-app/commit/43e401ff9bb46a6b1f7bf18f85c016a214a7c35b))
+
 ## [4.1.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v4.0.0...v4.1.0) (2024-03-21)
 
 
