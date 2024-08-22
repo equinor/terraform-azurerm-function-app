@@ -6,6 +6,13 @@
 
 Terraform module which creates Azure Function App resources.
 
+## Features
+
+- HTTPS enforced.
+- Public network access denied by default.
+- Audit logs sent to given Log Analytics workspace by default.
+- Changes to app settings `BUILD`, `BUILD_NUMBER` and `BUILD_ID` ignored, allowing them to be configured outside of Terraform (commonly in a CI/CD pipeline).
+
 ## Prerequisites
 
 - Azure role `Contributor` at the resource group scope.
