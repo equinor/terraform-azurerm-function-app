@@ -165,6 +165,51 @@ variable "use_32_bit_worker" {
   default     = true
 }
 
+variable "ip_restriction_default_action" {
+  description = "The default action for traffic that does not match any IP restriction rule. Value must be \"Allow\" or \"Deny\"."
+  type        = string
+  default     = "Deny"
+  nullable    = false
+
+  validation {
+    condition     = contains(["Allow", "Deny"], var.ip_restriction_default_action)
+    error_message = "IP restriction default action must be \"Allow\" or \"Deny\"."
+  }
+}
+
+variable "scm_ip_restriction_default_action" {
+  description = "The default action for traffic to the Source Control Manager (SCM) that does not match any IP restriction rule. Value must be \"Allow\" or \"Deny\"."
+  type        = string
+  default     = "Deny"
+  nullable    = false
+
+  validation {
+    condition     = contains(["Allow", "Deny"], var.scm_ip_restriction_default_action)
+    error_message = "SCM IP restriction default action must be \"Allow\" or \"Deny\"."
+  }
+}
+
+variable "ip_restrictions" {
+  description = "A list of IP restrictions to be configured for this Function App."
+
+  type = list(object({
+    action      = optional(string, "Allow")
+    ip_address  = optional(string)
+    name        = string
+    priority    = number
+    service_tag = optional(string)
+
+    headers = optional(object({
+      x_forwarded_for   = optional(list(string))
+      x_forwarded_host  = optional(list(string))
+      x_azure_fdid      = optional(list(string))
+      x_fd_health_probe = optional(list(string))
+    }))
+  }))
+
+  default = []
+}
+
 variable "identity_ids" {
   description = "A list of IDs of managed identities to be assigned to this Web App."
   type        = list(string)
