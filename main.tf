@@ -44,13 +44,13 @@ resource "azurerm_linux_function_app" "this" {
     application_insights_key               = null
     application_insights_connection_string = var.application_insights_connection_string
 
-    vnet_route_all_enabled                 = var.vnet_route_all_enabled
-    elastic_instance_minimum               = var.elastic_instance_minimum
-    pre_warmed_instance_count              = var.pre_warmed_instance_count
-    app_scale_limit                        = var.app_scale_limit
-    use_32_bit_worker                      = var.use_32_bit_worker
-    ip_restriction_default_action          = var.ip_restriction_default_action
-    scm_ip_restriction_default_action      = var.scm_ip_restriction_default_action
+    vnet_route_all_enabled            = var.vnet_route_all_enabled
+    elastic_instance_minimum          = var.elastic_instance_minimum
+    pre_warmed_instance_count         = var.pre_warmed_instance_count
+    app_scale_limit                   = var.app_scale_limit
+    use_32_bit_worker                 = var.use_32_bit_worker
+    ip_restriction_default_action     = var.ip_restriction_default_action
+    scm_ip_restriction_default_action = var.scm_ip_restriction_default_action
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
@@ -171,13 +171,13 @@ resource "azurerm_windows_function_app" "this" {
     application_insights_key               = null
     application_insights_connection_string = var.application_insights_connection_string
 
-    vnet_route_all_enabled                 = var.vnet_route_all_enabled
-    elastic_instance_minimum               = var.elastic_instance_minimum
-    pre_warmed_instance_count              = var.pre_warmed_instance_count
-    app_scale_limit                        = var.app_scale_limit
-    use_32_bit_worker                      = var.use_32_bit_worker
-    ip_restriction_default_action          = var.ip_restriction_default_action
-    scm_ip_restriction_default_action      = var.scm_ip_restriction_default_action
+    vnet_route_all_enabled            = var.vnet_route_all_enabled
+    elastic_instance_minimum          = var.elastic_instance_minimum
+    pre_warmed_instance_count         = var.pre_warmed_instance_count
+    app_scale_limit                   = var.app_scale_limit
+    use_32_bit_worker                 = var.use_32_bit_worker
+    ip_restriction_default_action     = var.ip_restriction_default_action
+    scm_ip_restriction_default_action = var.scm_ip_restriction_default_action
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
