@@ -40,13 +40,15 @@ resource "azurerm_linux_function_app" "this" {
   virtual_network_subnet_id = var.virtual_network_subnet_id
 
   site_config {
-    application_insights_key               = var.application_insights_key
+    # Ref: https://learn.microsoft.com/en-us/azure/azure-monitor/app/migrate-from-instrumentation-keys-to-connection-strings
+    application_insights_key               = null
     application_insights_connection_string = var.application_insights_connection_string
-    vnet_route_all_enabled                 = var.vnet_route_all_enabled
-    elastic_instance_minimum               = var.elastic_instance_minimum
-    pre_warmed_instance_count              = var.pre_warmed_instance_count
-    app_scale_limit                        = var.app_scale_limit
-    use_32_bit_worker                      = var.use_32_bit_worker
+
+    vnet_route_all_enabled    = var.vnet_route_all_enabled
+    elastic_instance_minimum  = var.elastic_instance_minimum
+    pre_warmed_instance_count = var.pre_warmed_instance_count
+    app_scale_limit           = var.app_scale_limit
+    use_32_bit_worker         = var.use_32_bit_worker
 
     dynamic "application_stack" {
       for_each = local.dotnet_application_stack
@@ -150,13 +152,15 @@ resource "azurerm_windows_function_app" "this" {
   virtual_network_subnet_id = var.virtual_network_subnet_id
 
   site_config {
-    application_insights_key               = var.application_insights_key
+    # Ref: https://learn.microsoft.com/en-us/azure/azure-monitor/app/migrate-from-instrumentation-keys-to-connection-strings
+    application_insights_key               = null
     application_insights_connection_string = var.application_insights_connection_string
-    vnet_route_all_enabled                 = var.vnet_route_all_enabled
-    elastic_instance_minimum               = var.elastic_instance_minimum
-    pre_warmed_instance_count              = var.pre_warmed_instance_count
-    app_scale_limit                        = var.app_scale_limit
-    use_32_bit_worker                      = var.use_32_bit_worker
+
+    vnet_route_all_enabled    = var.vnet_route_all_enabled
+    elastic_instance_minimum  = var.elastic_instance_minimum
+    pre_warmed_instance_count = var.pre_warmed_instance_count
+    app_scale_limit           = var.app_scale_limit
+    use_32_bit_worker         = var.use_32_bit_worker
 
     dynamic "application_stack" {
       for_each = local.dotnet_application_stack
