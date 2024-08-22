@@ -32,8 +32,8 @@ resource "azurerm_linux_function_app" "this" {
   # Enforced by Equinor policy
   https_only = true
 
-  # App settings should be configured during application deployment
-  app_settings = null
+  app_settings                = var.app_settings
+  functions_extension_version = var.functions_extension_version
 
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
@@ -99,8 +99,11 @@ resource "azurerm_linux_function_app" "this" {
 
   lifecycle {
     ignore_changes = [
-      # Configure app settings during application deployment
-      app_settings,
+      # Ignore changes to common build settings.
+      # These are usually configured in CI/CD pipelines.
+      app_settings["BUILD"],
+      app_settings["BUILD_NUMBER"],
+      app_settings["BUILD_ID"],
 
       # The following tags are managed by Azure
       tags["hidden-link: /app-insights-instrumentation-key"],
@@ -139,8 +142,8 @@ resource "azurerm_windows_function_app" "this" {
   # Enforced by Equinor policy
   https_only = true
 
-  # App settings should be configured during application deployment
-  app_settings = null
+  app_settings                = var.app_settings
+  functions_extension_version = var.functions_extension_version
 
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
@@ -198,8 +201,11 @@ resource "azurerm_windows_function_app" "this" {
 
   lifecycle {
     ignore_changes = [
-      # Configure app settings during application deployment
-      app_settings,
+      # Ignore changes to common build settings.
+      # These are usually configured in CI/CD pipelines.
+      app_settings["BUILD"],
+      app_settings["BUILD_NUMBER"],
+      app_settings["BUILD_ID"],
 
       # The following tags are managed by Azure
       tags["hidden-link: /app-insights-instrumentation-key"],
@@ -219,6 +225,13 @@ resource "azurerm_windows_function_app" "this" {
 
       error_message = "Multiple application stacks are defined. Number of application stacks defined can only be one or null."
     }
+  }
+}
+
+check "build_settings_check" {
+  assert {
+    condition     = length(setintersection(["BUILD", "BUILD_NUMBER", "BUILD_ID"], keys(var.app_settings))) == 0
+    error_message = "App settings \"BUILD\", \"BUILD_NUMBER\" and \"BUILD_ID\" should be configured outside of Terraform, commonly in a CI/CD pipeline. Any changes made to these app settings will be ignored."
   }
 }
 
