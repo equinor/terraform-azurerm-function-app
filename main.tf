@@ -47,6 +47,21 @@ resource "azurerm_linux_function_app" "this" {
     pre_warmed_instance_count              = var.pre_warmed_instance_count
     app_scale_limit                        = var.app_scale_limit
     use_32_bit_worker                      = var.use_32_bit_worker
+    ip_restriction_default_action          = var.ip_restriction_default_action
+    scm_ip_restriction_default_action      = var.scm_ip_restriction_default_action
+
+    dynamic "ip_restriction" {
+      for_each = var.ip_restrictions
+
+      content {
+        action      = ip_restriction.value.action
+        headers     = ip_restriction.value.headers != null ? [ip_restriction.value.headers] : []
+        ip_address  = ip_restriction.value.ip_address
+        name        = ip_restriction.value.name
+        priority    = ip_restriction.value.priority
+        service_tag = ip_restriction.value.service_tag
+      }
+    }
 
     dynamic "application_stack" {
       for_each = local.dotnet_application_stack
@@ -157,6 +172,21 @@ resource "azurerm_windows_function_app" "this" {
     pre_warmed_instance_count              = var.pre_warmed_instance_count
     app_scale_limit                        = var.app_scale_limit
     use_32_bit_worker                      = var.use_32_bit_worker
+    ip_restriction_default_action          = var.ip_restriction_default_action
+    scm_ip_restriction_default_action      = var.scm_ip_restriction_default_action
+
+    dynamic "ip_restriction" {
+      for_each = var.ip_restrictions
+
+      content {
+        action      = ip_restriction.value.action
+        headers     = ip_restriction.value.headers != null ? [ip_restriction.value.headers] : []
+        ip_address  = ip_restriction.value.ip_address
+        name        = ip_restriction.value.name
+        priority    = ip_restriction.value.priority
+        service_tag = ip_restriction.value.service_tag
+      }
+    }
 
     dynamic "application_stack" {
       for_each = local.dotnet_application_stack
