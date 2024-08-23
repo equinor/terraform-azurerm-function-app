@@ -2,8 +2,7 @@ locals {
   is_windows   = var.kind == "Windows"
   function_app = local.is_windows ? azurerm_windows_function_app.this[0] : azurerm_linux_function_app.this[0]
 
-  # TODO(@hknutsen): use provider function instead
-  storage_account_name = split("/", var.storage_account_id)[8]
+  storage_account_name = provider::azurerm::parse_resource_id(var.storage_account_id).resource_name
 
   # Auto assign Key Vault reference identity
   identity_ids = concat(compact([var.key_vault_reference_identity_id]), var.identity_ids)
