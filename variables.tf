@@ -71,7 +71,7 @@ variable "diagnostic_setting_enabled_metric_categories" {
 }
 
 variable "kind" {
-  description = "The kind of Function App to create."
+  description = "The kind of Function App to create. Allowed values are \"Linux\" and \"Windows\"."
   type        = string
   default     = "Linux"
 
@@ -82,43 +82,43 @@ variable "kind" {
 }
 
 variable "application_insights_connection_string" {
-  description = "The connection string of the Application Insights component to configure for this Function App."
+  description = "The connection string of the Application Insights component to connect to this Function App."
   type        = string
   default     = null
 }
 
 variable "key_vault_reference_identity_id" {
-  description = "The ID of the Managed Identity that will be used to fetch app settings sourced from Key Vault."
+  description = "The ID of the managed identity that will be used to fetch app settings sourced from Key Vault."
   type        = string
   default     = null
 }
 
 variable "virtual_network_subnet_id" {
-  description = "The ID of the virtual network subnet to use for vNet integration."
+  description = "The ID of a virtual network subnet to integrate this Function App with."
   type        = string
   default     = null
 }
 
 variable "vnet_route_all_enabled" {
-  description = "Should all outbound traffic have NAT Gateways, Network Security Groups and User Defined Routes applied?"
+  description = "Should all outbound traffic have NAT gateways, network security groups and user-defined routes applied?"
   type        = bool
   default     = false
 }
 
 variable "elastic_instance_minimum" {
-  description = "The minimum number of instances for this Function App. Only supported for Elastic Premium plans."
+  description = "The minimum number of instances for this Function App. Only supported for Elastic Premium (e.g. \"EP1\") plans."
   type        = number
   default     = 1
 }
 
 variable "pre_warmed_instance_count" {
-  description = "The number of pre-warmed instances for this Function App. Only supported for Elastic Premium plans."
+  description = "The number of pre-warmed instances for this Function App. Only supported for Elastic Premium (e.g. \"EP1\") plans."
   type        = number
   default     = 1
 }
 
 variable "app_scale_limit" {
-  description = "The number of instanstes this Function App can scale to. Only supported for Consumption and Premium plans."
+  description = "The number of instanstes this Function App can scale to. Only supported for Consumption (e.g. \"Y1\") and Elastic Premium (e.g. \"EP1\") plans."
   type        = number
   default     = 1
 }
@@ -211,7 +211,7 @@ variable "ip_restrictions" {
 }
 
 variable "identity_ids" {
-  description = "A list of IDs of managed identities to be assigned to this Web App."
+  description = "A list of IDs of managed identities to be assigned to this Function App."
   type        = list(string)
   default     = []
 }
