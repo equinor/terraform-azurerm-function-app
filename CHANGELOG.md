@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.0.0...v5.0.1) (2024-08-23)
+
+
+### Miscellaneous Chores
+
+* update variable and output descriptions ([#72](https://github.com/equinor/terraform-azurerm-function-app/issues/72)) ([24ae031](https://github.com/equinor/terraform-azurerm-function-app/commit/24ae03189d1f67479e43648977e9a089c58522d7))
+
 ## [5.0.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v4.1.0...v5.0.0) (2024-08-22)
 
 
