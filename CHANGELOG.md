@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.0.2](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.0.1...v5.0.2) (2024-08-26)
+
+
+### Documentation
+
+* clarify prerequisite roles ([#74](https://github.com/equinor/terraform-azurerm-function-app/issues/74)) ([1d204e7](https://github.com/equinor/terraform-azurerm-function-app/commit/1d204e786661c7dc82daf0e424e3d81dd464bc3b))
+
 ## [5.0.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.0.0...v5.0.1) (2024-08-23)
 
 
