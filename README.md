@@ -16,7 +16,7 @@ Terraform module which creates Azure Function App resources.
 ## Prerequisites
 
 - Azure role `Contributor` at the resource group scope.
-- Azure role `Owner` at the Storage account scope.
+- Azure role `Role Based Access Administrator` at the Storage account scope.
 
 ## Development
 
