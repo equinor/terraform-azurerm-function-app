@@ -41,7 +41,6 @@ resource "azurerm_linux_function_app" "this" {
   sticky_settings {
     app_setting_names       = var.sticky_settings_connection_string_names
     connection_string_names = var.sticky_settings_connection_string_names
-
   }
 
   site_config {
@@ -174,7 +173,6 @@ resource "azurerm_windows_function_app" "this" {
   sticky_settings {
     app_setting_names       = var.sticky_settings_connection_string_names
     connection_string_names = var.sticky_settings_connection_string_names
-
   }
 
   site_config {
