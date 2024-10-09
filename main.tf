@@ -165,6 +165,12 @@ resource "azurerm_windows_function_app" "this" {
 
   virtual_network_subnet_id = var.virtual_network_subnet_id
 
+  sticky_settings {
+    app_setting_names       = var.sticky_settings_connection_string_names
+    connection_string_names = var.sticky_settings_connection_string_names
+
+  }
+
   site_config {
     # Ref: https://learn.microsoft.com/en-us/azure/azure-monitor/app/migrate-from-instrumentation-keys-to-connection-strings
     application_insights_key               = null
