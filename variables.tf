@@ -219,7 +219,7 @@ variable "identity_ids" {
 variable "builtin_logging_enabled" {
   description = "Should built in logging be enabled. Configures app setting based on the configured storage setting."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "tags" {
