@@ -219,13 +219,13 @@ variable "identity_ids" {
 variable "ftp_publish_basic_authentication_enabled" {
   description = "Should the default FTP Basic Authentication publishing profile be anabled."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "webdeploy_publish_basic_authentication_enabled" {
   description = "Should the default WebDeploy Basic Authentication publishing credentials enabled."
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "tags" {
