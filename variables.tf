@@ -216,6 +216,43 @@ variable "identity_ids" {
   default     = []
 }
 
+variable "builtin_logging_enabled" {
+  description = "Should built in logging be enabled. Configures app setting based on the configured storage setting."
+  type = bool
+  default = true
+}
+
+variable "client_certificate_mode" {
+  description = "The mode of the Function App's certificates requirement for incoming requests."
+  type = string
+  default = "Optional"
+}
+
+variable "ftp_publish_basic_authentication_enabled" {
+  description = "Should the default FTP Basic Authentication publishing profile be anabled."
+  type = bool
+  default = true
+}
+
+variable "webdeploy_publish_basic_authentication_enabled" {
+  description = "Should the default WebDeploy Basic Authentication publishing credentials enabled."
+  type = bool
+  default = true
+}
+
+variable "ftps_state" {
+  description = "State of FTP/FTPS service for this Windows Function App."
+  type = string
+  default = "Disabled"
+}
+
+variable "http2_enabled" {
+  description = "Specifies if the HTTP2 protocol should be enabled."
+  type = bool
+  default = false
+}
+
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)
