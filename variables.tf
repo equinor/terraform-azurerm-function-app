@@ -217,7 +217,7 @@ variable "identity_ids" {
 }
 
 variable "ftp_publish_basic_authentication_enabled" {
-  description = "Should basic (username and password) authentication be enabled for the FPT client?"
+  description = "Should basic (username and password) authentication be enabled for the FTP client?"
   type        = bool
   default     = false
 }
