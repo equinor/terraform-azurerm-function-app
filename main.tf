@@ -34,6 +34,8 @@ resource "azurerm_linux_function_app" "this" {
   app_settings                = var.app_settings
   functions_extension_version = var.functions_extension_version
 
+  client_certificate_mode = var.client_certificate_mode
+
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
   virtual_network_subnet_id = var.virtual_network_subnet_id
@@ -160,6 +162,8 @@ resource "azurerm_windows_function_app" "this" {
 
   app_settings                = var.app_settings
   functions_extension_version = var.functions_extension_version
+
+  client_certificate_mode = var.client_certificate_mode
 
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 

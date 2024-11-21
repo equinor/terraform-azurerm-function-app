@@ -216,6 +216,12 @@ variable "identity_ids" {
   default     = []
 }
 
+variable "client_certificate_mode" {
+  description = "The mode of the Function App's certificates requirement for incoming requests."
+  type        = string
+  default     = "Optional"
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)
