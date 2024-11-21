@@ -216,6 +216,12 @@ variable "identity_ids" {
   default     = []
 }
 
+variable "builtin_logging_enabled" {
+  description = "Should built in logging be enabled. Configures app setting based on the configured storage setting."
+  type = bool
+  default = true
+}
+
 variable "ftp_publish_basic_authentication_enabled" {
   description = "Should the default FTP Basic Authentication publishing profile be anabled."
   type        = bool
