@@ -216,6 +216,12 @@ variable "identity_ids" {
   default     = []
 }
 
+variable "ftps_state" {
+  description = "State of FTP/FTPS service for this Windows Function App."
+  type        = string
+  default     = "Disabled"
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)
