@@ -223,7 +223,7 @@ variable "ftp_publish_basic_authentication_enabled" {
 }
 
 variable "webdeploy_publish_basic_authentication_enabled" {
-  description = "Should the default WebDeploy Basic Authentication publishing credentials enabled."
+  description = "Should basic (username and password) authentication be enabled for the WebDeploy client?"
   type        = bool
   default     = false
 }
