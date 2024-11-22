@@ -225,6 +225,7 @@ variable "ftps_state" {
     condition     = contains(["AllAllowed", "FtpsOnly", "Disabled"], var.ftps_state)
     error_message = "FTPS state must be \"AllAllowed\", \"FtpsOnly\" or \"Disabled\"."
   }
+}
 
 variable "ftp_publish_basic_authentication_enabled" {
   description = "Should basic (username and password) authentication be enabled for the FTP client?"
