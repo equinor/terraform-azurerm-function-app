@@ -217,7 +217,7 @@ variable "identity_ids" {
 }
 
 variable "ftps_state" {
-  description = "State of FTP/FTPS service for this Windows Function App."
+  description = "The state of the FTP / FTPS service for this Function App. Value must be \"AllAllowed\", \"FtpsOnly\" or \"Disabled\"."
   type        = string
   default     = "Disabled"
 }
