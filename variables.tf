@@ -220,6 +220,11 @@ variable "ftps_state" {
   description = "The state of the FTP / FTPS service for this Function App. Value must be \"AllAllowed\", \"FtpsOnly\" or \"Disabled\"."
   type        = string
   default     = "Disabled"
+  
+  validation {
+    condition     = contains(["AllAllowed", "FtpsOnly", "Disabled"], var.ftps_state)
+    error_message = "FTPS state must be \"AllAllowed\", \"FtpsOnly\" or \"Disabled\"."
+  }
 }
 
 variable "tags" {
