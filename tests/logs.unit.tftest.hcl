@@ -62,7 +62,7 @@ run "windows_builtin_logging_disabled" {
   }
 
   assert {
-    condition = azurerm_linux_function_app.this[0].builtin_logging_enabled == false
+    condition = azurerm_windows_function_app.this[0].builtin_logging_enabled == false
     error_message = "Built in logging enabled on the configured storage setting"
   }
 }
@@ -83,7 +83,7 @@ run "windows_builtin_logging_enabled" {
   }
 
   assert {
-    condition = azurerm_linux_function_app.this[0].builtin_logging_enabled == true
+    condition = azurerm_windows_function_app.this[0].builtin_logging_enabled == true
     error_message = "Built in logging disable on the configured storage setting"
   }
 }

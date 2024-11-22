@@ -78,7 +78,7 @@ run "windows_app" {
   }
 
   assert {
-    condition = azurerm_linux_function_app.this[0].builtin_logging_enabled == false
+    condition = azurerm_windows_function_app.this[0].builtin_logging_enabled == false
     error_message = "Built in logging enabled on the configured storage setting"
   }
 }
