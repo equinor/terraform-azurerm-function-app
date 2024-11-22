@@ -216,6 +216,20 @@ variable "identity_ids" {
   default     = []
 }
 
+variable "ftp_publish_basic_authentication_enabled" {
+  description = "Should basic (username and password) authentication be enabled for the FTP client?"
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
+variable "webdeploy_publish_basic_authentication_enabled" {
+  description = "Should basic (username and password) authentication be enabled for the WebDeploy client?"
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)

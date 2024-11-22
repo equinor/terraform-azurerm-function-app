@@ -27,6 +27,16 @@ run "linux_app" {
     condition     = length(azurerm_windows_function_app.this) == 0
     error_message = "Trying to create Windows Function App"
   }
+
+  assert {
+    condition     = azurerm_linux_function_app.this[0].ftp_publish_basic_authentication_enabled == false
+    error_message = "Basic authentication enabled for the FTP client."
+  }
+
+  assert {
+    condition     = azurerm_linux_function_app.this[0].webdeploy_publish_basic_authentication_enabled == false
+    error_message = "Basic authentication enabled for the WebDeploy client."
+  }
 }
 
 run "windows_app" {
@@ -50,5 +60,15 @@ run "windows_app" {
   assert {
     condition     = length(azurerm_linux_function_app.this) == 0
     error_message = "Trying to create Linux Function App"
+  }
+
+  assert {
+    condition     = azurerm_windows_function_app.this[0].ftp_publish_basic_authentication_enabled == false
+    error_message = "Basic authentication enabled for the FTP client."
+  }
+
+  assert {
+    condition     = azurerm_windows_function_app.this[0].webdeploy_publish_basic_authentication_enabled == false
+    error_message = "Basic authentication enabled for the WebDeploy client."
   }
 }
