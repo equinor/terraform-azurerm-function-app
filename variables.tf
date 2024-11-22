@@ -220,6 +220,19 @@ variable "http2_enabled" {
   description = "Specifies if the HTTP2 protocol should be enabled."
   type        = bool
   default     = false
+
+variable "ftp_publish_basic_authentication_enabled" {
+  description = "Should basic (username and password) authentication be enabled for the FTP client?"
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
+variable "webdeploy_publish_basic_authentication_enabled" {
+  description = "Should basic (username and password) authentication be enabled for the WebDeploy client?"
+  type        = bool
+  default     = false
+  nullable    = false
 }
 
 variable "tags" {
