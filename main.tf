@@ -169,6 +169,9 @@ resource "azurerm_windows_function_app" "this" {
   webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
   builtin_logging_enabled                        = var.builtin_logging_enabled
 
+  ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
+  webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
+
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
   virtual_network_subnet_id = var.virtual_network_subnet_id
