@@ -216,6 +216,20 @@ variable "identity_ids" {
   default     = []
 }
 
+variable "ftp_publish_basic_authentication_enabled" {
+  description = "Should basic (username and password) authentication be enabled for the FTP client?"
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
+variable "webdeploy_publish_basic_authentication_enabled" {
+  description = "Should basic (username and password) authentication be enabled for the WebDeploy client?"
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
 variable "builtin_logging_enabled" {
   description = "Should built in logging be enabled. Configures app setting based on the configured storage setting."
   type        = bool

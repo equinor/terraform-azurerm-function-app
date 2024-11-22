@@ -34,6 +34,9 @@ resource "azurerm_linux_function_app" "this" {
   app_settings                = var.app_settings
   functions_extension_version = var.functions_extension_version
 
+  ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
+  webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
+
   builtin_logging_enabled = var.builtin_logging_enabled
 
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
@@ -162,8 +165,6 @@ resource "azurerm_windows_function_app" "this" {
 
   app_settings                = var.app_settings
   functions_extension_version = var.functions_extension_version
-
-  builtin_logging_enabled = var.builtin_logging_enabled
 
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
