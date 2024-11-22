@@ -220,7 +220,8 @@ variable "client_certificate_mode" {
   description = "The client cerftificate mode for this Web App. Value must be \"Required\", \"Optional\" or \"OptionalInteractiveUser\"."
   type        = string
   default     = "Required"
-  
+}
+
 variable "ftp_publish_basic_authentication_enabled" {
   description = "Should basic (username and password) authentication be enabled for the FTP client?"
   type        = bool
