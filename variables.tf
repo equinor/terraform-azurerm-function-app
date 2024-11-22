@@ -216,6 +216,12 @@ variable "identity_ids" {
   default     = []
 }
 
+variable "http2_enabled" {
+  description = "Specifies if the HTTP2 protocol should be enabled."
+  type        = bool
+  default     = false
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)
