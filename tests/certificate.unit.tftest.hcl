@@ -66,7 +66,7 @@ run "linux_client_certificate_mode_required" {
   }
 }
 
-run "linux_client_certificate_disable" {
+run "linux_client_certificate_disabled" {
   command = plan
 
   variables {
