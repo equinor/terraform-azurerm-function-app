@@ -89,6 +89,6 @@ run "windows_app" {
 
   assert {
     condition = azurerm_windows_function_app.this[0].client_certificate_enabled == false
-    error_message = "Client certificate enabled for Web App"
+    error_message = "Client certificate enabled for Function App"
   }
 }
