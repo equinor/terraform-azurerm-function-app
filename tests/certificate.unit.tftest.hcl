@@ -82,7 +82,7 @@ run "linux_client_certificate_disabled" {
 
   assert {
     condition = azurerm_linux_function_app.this[0].client_certificate_enabled == false
-    error_message = "Client certificate enabled for Web App"
+    error_message = "Client certificate enabled for Function App"
   }
 }
 
