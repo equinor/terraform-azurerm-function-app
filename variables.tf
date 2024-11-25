@@ -222,6 +222,12 @@ variable "client_certificate_mode" {
   default     = "Required"
 }
 
+variable "client_certificate_enabled" {
+  description = "Should client certififcate be enabled for this Web App?"
+  type = bool
+  default = false
+}
+
 variable "ftp_publish_basic_authentication_enabled" {
   description = "Should basic (username and password) authentication be enabled for the FTP client?"
   type        = bool

@@ -42,6 +42,11 @@ run "linux_app" {
     condition = azurerm_linux_function_app.this[0].client_certificate_mode == "Required"
     error_message = "Client certificate mode value is \"Optional\" or \"OptionalInteractiveUser\""
   }
+
+  assert {
+    condition = azurerm_linux_function_app.this[0].client_certificate_enabled == false
+    error_message = "Client certificate enabled for Web App"
+  }
 }
 
 run "windows_app" {
@@ -80,5 +85,10 @@ run "windows_app" {
   assert {
     condition = azurerm_windows_function_app.this[0].client_certificate_mode == "Required"
     error_message = "Client certificate mode value is \"Optional\" or \"OptionalInteractiveUser\""
+  }
+
+  assert {
+    condition = azurerm_windows_function_app.this[0].client_certificate_enabled == false
+    error_message = "Client certificate enabled for Web App"
   }
 }
