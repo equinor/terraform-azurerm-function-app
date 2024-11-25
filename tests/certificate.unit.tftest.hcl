@@ -168,7 +168,7 @@ run "windows_client_certificate_mode_required" {
   }
 }
 
-run "windows_client_certificate_disable" {
+run "windows_client_certificate_disabled" {
   command = plan
 
   variables {
