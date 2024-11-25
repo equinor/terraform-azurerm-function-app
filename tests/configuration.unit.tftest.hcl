@@ -167,7 +167,7 @@ run "windows_http2_disabled" {
   }
 
     assert {
-    condition = azurerm_linux_function_app.this[0].site_config[0].http2_enabled == false
+    condition = azurerm_windows_function_app.this[0].site_config[0].http2_enabled == false
     error_message = "HTTP2 protocol enabled"
   }
 }
