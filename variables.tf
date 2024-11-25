@@ -217,7 +217,7 @@ variable "identity_ids" {
 }
 
 variable "client_certificate_mode" {
-  description = "The client cerftificate mode for this Web App. Value must be \"Required\", \"Optional\" or \"OptionalInteractiveUser\"."
+  description = "The client cerftificate mode for this Function App. Value must be \"Required\", \"Optional\" or \"OptionalInteractiveUser\"."
   type        = string
   default     = "Required"
 }
