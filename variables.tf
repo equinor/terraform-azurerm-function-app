@@ -223,7 +223,7 @@ variable "client_certificate_mode" {
 }
 
 variable "client_certificate_enabled" {
-  description = "Should client certififcate be enabled for this Web App?"
+  description = "Should client certificate be enabled for this Function App?"
   type        = bool
   default     = false
 }
