@@ -37,6 +37,11 @@ run "linux_app" {
     condition     = azurerm_linux_function_app.this[0].webdeploy_publish_basic_authentication_enabled == false
     error_message = "Basic authentication enabled for the WebDeploy client."
   }
+
+  assert {
+    condition = azurerm_linux_function_app.this[0].client_certificate_mode == "Required"
+    error_message = "Client certificate mode value is \"Optional\" or \"OptionalInteractiveUser\""
+  }
 }
 
 run "windows_app" {
@@ -70,5 +75,10 @@ run "windows_app" {
   assert {
     condition     = azurerm_windows_function_app.this[0].webdeploy_publish_basic_authentication_enabled == false
     error_message = "Basic authentication enabled for the WebDeploy client."
+  }
+
+  assert {
+    condition = azurerm_windows_function_app.this[0].client_certificate_mode == "Required"
+    error_message = "Client certificate mode value is \"Optional\" or \"OptionalInteractiveUser\""
   }
 }
