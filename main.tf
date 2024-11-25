@@ -34,7 +34,7 @@ resource "azurerm_linux_function_app" "this" {
   app_settings                = var.app_settings
   functions_extension_version = var.functions_extension_version
 
-  client_certificate_mode = var.client_certificate_mode
+  client_certificate_mode    = var.client_certificate_mode
   client_certificate_enabled = var.client_certificate_enabled
 
   ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
@@ -167,7 +167,7 @@ resource "azurerm_windows_function_app" "this" {
   app_settings                = var.app_settings
   functions_extension_version = var.functions_extension_version
 
-  client_certificate_mode = var.client_certificate_mode
+  client_certificate_mode    = var.client_certificate_mode
   client_certificate_enabled = var.client_certificate_enabled
 
   ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled

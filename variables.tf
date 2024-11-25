@@ -224,8 +224,8 @@ variable "client_certificate_mode" {
 
 variable "client_certificate_enabled" {
   description = "Should client certififcate be enabled for this Web App?"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "ftp_publish_basic_authentication_enabled" {
