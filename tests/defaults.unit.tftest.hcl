@@ -37,10 +37,11 @@ run "linux_app" {
     condition     = azurerm_linux_function_app.this[0].webdeploy_publish_basic_authentication_enabled == false
     error_message = "Basic authentication enabled for the WebDeploy client."
   }
-  
+
   assert {
     condition = azurerm_linux_function_app.this[0].site_config[0].ftps_state == "Disabled"
     error_message = "FTPS state is \"AllAllowed\", or \"FtpsOnly\"."
+  }
 
   assert {
     condition = azurerm_linux_function_app.this[0].builtin_logging_enabled == false
@@ -84,6 +85,7 @@ run "windows_app" {
   assert {
     condition = azurerm_windows_function_app.this[0].site_config[0].ftps_state == "Disabled"
     error_message = "FTPS state is \"AllAllowed\", or \"FtpsOnly\"."
+  }
 
   assert {
     condition = azurerm_windows_function_app.this[0].builtin_logging_enabled == false
