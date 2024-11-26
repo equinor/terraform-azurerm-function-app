@@ -38,6 +38,9 @@ resource "azurerm_linux_function_app" "this" {
   app_settings                = var.app_settings
   functions_extension_version = var.functions_extension_version
 
+  client_certificate_mode    = var.client_certificate_mode
+  client_certificate_enabled = var.client_certificate_enabled
+
   ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
   webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
 
@@ -59,6 +62,10 @@ resource "azurerm_linux_function_app" "this" {
     use_32_bit_worker                 = var.use_32_bit_worker
     ip_restriction_default_action     = var.ip_restriction_default_action
     scm_ip_restriction_default_action = var.scm_ip_restriction_default_action
+
+    http2_enabled = var.http2_enabled
+
+    ftps_state = var.ftps_state
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
@@ -170,6 +177,9 @@ resource "azurerm_windows_function_app" "this" {
   app_settings                = var.app_settings
   functions_extension_version = var.functions_extension_version
 
+  client_certificate_mode    = var.client_certificate_mode
+  client_certificate_enabled = var.client_certificate_enabled
+
   ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
   webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
 
@@ -191,6 +201,10 @@ resource "azurerm_windows_function_app" "this" {
     use_32_bit_worker                 = var.use_32_bit_worker
     ip_restriction_default_action     = var.ip_restriction_default_action
     scm_ip_restriction_default_action = var.scm_ip_restriction_default_action
+
+    http2_enabled = var.http2_enabled
+
+    ftps_state = var.ftps_state
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
