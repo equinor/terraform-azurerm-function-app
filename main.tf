@@ -37,6 +37,8 @@ resource "azurerm_linux_function_app" "this" {
   ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
   webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
 
+  builtin_logging_enabled = false
+
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
   virtual_network_subnet_id = var.virtual_network_subnet_id
@@ -166,6 +168,8 @@ resource "azurerm_windows_function_app" "this" {
 
   ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
   webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
+
+  builtin_logging_enabled = false
 
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
