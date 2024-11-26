@@ -59,9 +59,9 @@ resource "azurerm_linux_function_app" "this" {
     ip_restriction_default_action     = var.ip_restriction_default_action
     scm_ip_restriction_default_action = var.scm_ip_restriction_default_action
 
-    http2_enabled                     = var.http2_enabled
+    http2_enabled = var.http2_enabled
 
-    ftps_state                        = var.ftps_state
+    ftps_state = var.ftps_state
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
@@ -198,9 +198,9 @@ resource "azurerm_windows_function_app" "this" {
     ip_restriction_default_action     = var.ip_restriction_default_action
     scm_ip_restriction_default_action = var.scm_ip_restriction_default_action
 
-    http2_enabled                     = var.http2_enabled
+    http2_enabled = var.http2_enabled
 
-    ftps_state                        = var.ftps_state
+    ftps_state = var.ftps_state
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions

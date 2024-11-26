@@ -218,8 +218,8 @@ variable "identity_ids" {
 
 variable "http2_enabled" {
   description = "Should the HTTP2 protocol be enabled for this Function App?"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "ftps_state" {
