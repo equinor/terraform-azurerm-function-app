@@ -217,7 +217,7 @@ variable "identity_ids" {
 }
 
 variable "http2_enabled" {
-  description = "Should the HTTP2 protocol be enabled for this Function App?"
+  description = "Should the HTTP/2 protocol be enabled for this Function App?"
   type        = bool
   default     = false
 }
