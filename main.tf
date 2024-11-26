@@ -58,6 +58,7 @@ resource "azurerm_linux_function_app" "this" {
     use_32_bit_worker                 = var.use_32_bit_worker
     ip_restriction_default_action     = var.ip_restriction_default_action
     scm_ip_restriction_default_action = var.scm_ip_restriction_default_action
+    ftps_state                        = var.ftps_state
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
@@ -193,6 +194,7 @@ resource "azurerm_windows_function_app" "this" {
     use_32_bit_worker                 = var.use_32_bit_worker
     ip_restriction_default_action     = var.ip_restriction_default_action
     scm_ip_restriction_default_action = var.scm_ip_restriction_default_action
+    ftps_state                        = var.ftps_state
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions

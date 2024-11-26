@@ -216,6 +216,17 @@ variable "identity_ids" {
   default     = []
 }
 
+variable "ftps_state" {
+  description = "The state of the FTP / FTPS service for this Function App. Value must be \"AllAllowed\", \"FtpsOnly\" or \"Disabled\"."
+  type        = string
+  default     = "Disabled"
+
+  validation {
+    condition     = contains(["AllAllowed", "FtpsOnly", "Disabled"], var.ftps_state)
+    error_message = "FTPS state must be \"AllAllowed\", \"FtpsOnly\" or \"Disabled\"."
+  }
+}
+
 variable "client_certificate_mode" {
   description = "The client cerftificate mode for this Function App. Value must be \"Required\", \"Optional\" or \"OptionalInteractiveUser\"."
   type        = string
