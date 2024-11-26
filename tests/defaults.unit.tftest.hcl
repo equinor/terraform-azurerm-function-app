@@ -39,11 +39,6 @@ run "linux_app" {
   }
 
   assert {
-    condition     = azurerm_linux_function_app.this[0].builtin_logging_enabled == false
-    error_message = "Built-in logging enabled."
-  }
-
-  assert {
     condition     = azurerm_linux_function_app.this[0].site_config[0].http2_enabled == false
     error_message = "HTTP2 protocol enabled"
   }
@@ -61,6 +56,11 @@ run "linux_app" {
   assert {
     condition     = azurerm_linux_function_app.this[0].client_certificate_enabled == false
     error_message = "Client certificate enabled for Function App"
+  }
+
+  assert {
+    condition     = azurerm_linux_function_app.this[0].builtin_logging_enabled == false
+    error_message = "Built-in logging enabled."
   }
 }
 
@@ -98,11 +98,6 @@ run "windows_app" {
   }
 
   assert {
-    condition     = azurerm_windows_function_app.this[0].builtin_logging_enabled == false
-    error_message = "Built-in logging enabled."
-  }
-
-  assert {
     condition     = azurerm_windows_function_app.this[0].site_config[0].http2_enabled == false
     error_message = "HTTP2 protocol enabled"
   }
@@ -120,5 +115,10 @@ run "windows_app" {
   assert {
     condition     = azurerm_windows_function_app.this[0].client_certificate_enabled == false
     error_message = "Client certificate enabled for Function App"
+  }
+
+  assert {
+    condition     = azurerm_windows_function_app.this[0].builtin_logging_enabled == false
+    error_message = "Built-in logging enabled."
   }
 }
