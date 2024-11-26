@@ -4,6 +4,10 @@ locals {
 
   storage_account_name = provider::azurerm::parse_resource_id(var.storage_account_id).resource_name
 
+  # Built-in monitoring is no longer recommended. Use Application Insights instead.
+  # Ref: https://learn.microsoft.com/en-us/azure/azure-functions/configure-monitoring#disable-built-in-logging
+  builtin_logging_enabled = false
+
   # Auto assign Key Vault reference identity
   identity_ids = concat(compact([var.key_vault_reference_identity_id]), var.identity_ids)
 
@@ -37,7 +41,7 @@ resource "azurerm_linux_function_app" "this" {
   ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
   webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
 
-  builtin_logging_enabled = false
+  builtin_logging_enabled = local.builtin_logging_enabled
 
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
@@ -169,7 +173,7 @@ resource "azurerm_windows_function_app" "this" {
   ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
   webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
 
-  builtin_logging_enabled = false
+  builtin_logging_enabled = local.builtin_logging_enabled
 
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
