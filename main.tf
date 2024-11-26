@@ -4,7 +4,7 @@ locals {
 
   storage_account_name = provider::azurerm::parse_resource_id(var.storage_account_id).resource_name
 
-  # Built-in monitoring is no longer recommended. Use Application Insights instead.
+  # Built-in logging is no longer recommended. Use Application Insights instead.
   # Ref: https://learn.microsoft.com/en-us/azure/azure-functions/configure-monitoring#disable-built-in-logging
   builtin_logging_enabled = false
 
