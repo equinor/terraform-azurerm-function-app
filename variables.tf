@@ -216,6 +216,18 @@ variable "identity_ids" {
   default     = []
 }
 
+variable "client_certificate_mode" {
+  description = "The client cerftificate mode for this Function App. Value must be \"Required\", \"Optional\" or \"OptionalInteractiveUser\"."
+  type        = string
+  default     = "Required"
+}
+
+variable "client_certificate_enabled" {
+  description = "Should client certificate be enabled for this Function App?"
+  type        = bool
+  default     = false
+}
+
 variable "ftp_publish_basic_authentication_enabled" {
   description = "Should basic (username and password) authentication be enabled for the FTP client?"
   type        = bool

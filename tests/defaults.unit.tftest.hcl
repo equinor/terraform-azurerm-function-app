@@ -39,6 +39,15 @@ run "linux_app" {
   }
 
   assert {
+    condition = azurerm_linux_function_app.this[0].client_certificate_mode == "Required"
+    error_message = "Client certificate mode value is \"Optional\" or \"OptionalInteractiveUser\""
+  }
+
+  assert {
+    condition = azurerm_linux_function_app.this[0].client_certificate_enabled == false
+    error_message = "Client certificate enabled for Function App"
+  }
+  assert {
     condition = azurerm_linux_function_app.this[0].builtin_logging_enabled == false
     error_message = "Built in logging enabled on the configured storage setting"
   }
@@ -77,6 +86,15 @@ run "windows_app" {
     error_message = "Basic authentication enabled for the WebDeploy client."
   }
 
+  assert {
+    condition = azurerm_windows_function_app.this[0].client_certificate_mode == "Required"
+    error_message = "Client certificate mode value is \"Optional\" or \"OptionalInteractiveUser\""
+  }
+
+  assert {
+    condition = azurerm_windows_function_app.this[0].client_certificate_enabled == false
+    error_message = "Client certificate enabled for Function App"
+  }
   assert {
     condition = azurerm_windows_function_app.this[0].builtin_logging_enabled == false
     error_message = "Built in logging enabled on the configured storage setting"
