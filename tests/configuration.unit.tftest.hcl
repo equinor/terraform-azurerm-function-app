@@ -159,6 +159,7 @@ run "windows_http2_disabled" {
     app_name                   = run.setup_tests.app_name
     resource_group_name        = run.setup_tests.resource_group_name
     location                   = run.setup_tests.location
+    kind                       = "Windows"
     app_service_plan_id        = run.setup_tests.app_service_plan_id
     storage_account_id         = run.setup_tests.storage_account_id
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
@@ -179,6 +180,7 @@ run "windows_http2_enabled" {
     app_name                   = run.setup_tests.app_name
     resource_group_name        = run.setup_tests.resource_group_name
     location                   = run.setup_tests.location
+    kind                       = "Windows"
     app_service_plan_id        = run.setup_tests.app_service_plan_id
     storage_account_id         = run.setup_tests.storage_account_id
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
