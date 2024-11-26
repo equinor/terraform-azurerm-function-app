@@ -179,6 +179,7 @@ run "windows_ftps_state_disabled" {
     app_name                   = run.setup_tests.app_name
     resource_group_name        = run.setup_tests.resource_group_name
     location                   = run.setup_tests.location
+    kind                       = "Windows"
     app_service_plan_id        = run.setup_tests.app_service_plan_id
     storage_account_id         = run.setup_tests.storage_account_id
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
@@ -199,6 +200,7 @@ run "windows_ftps_state_ftpsonly" {
     app_name                   = run.setup_tests.app_name
     resource_group_name        = run.setup_tests.resource_group_name
     location                   = run.setup_tests.location
+    kind                       = "Windows"
     app_service_plan_id        = run.setup_tests.app_service_plan_id
     storage_account_id         = run.setup_tests.storage_account_id
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
@@ -219,6 +221,7 @@ run "windows_ftps_state_allallowed" {
     app_name                   = run.setup_tests.app_name
     resource_group_name        = run.setup_tests.resource_group_name
     location                   = run.setup_tests.location
+    kind                       = "Windows"
     app_service_plan_id        = run.setup_tests.app_service_plan_id
     storage_account_id         = run.setup_tests.storage_account_id
     log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
@@ -227,7 +230,7 @@ run "windows_ftps_state_allallowed" {
   }
 
   assert {
-    condition = azurerm_windows_function_app.this[0].site_config[0].ftps_state == "AllAllowd"
+    condition = azurerm_windows_function_app.this[0].site_config[0].ftps_state == "AllAllowed"
     error_message = "FTPS state is \"FtpsOnly\", or \"Disabled\"."
   }
 }
