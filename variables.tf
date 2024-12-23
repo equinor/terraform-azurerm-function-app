@@ -261,8 +261,8 @@ variable "webdeploy_publish_basic_authentication_enabled" {
 
 variable "builtin_logging_enabled" {
   description = "Should built in logging be enabled. Configures app setting based on the configured storage setting."
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "tags" {
