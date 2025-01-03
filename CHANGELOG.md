@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.1.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.1.0...v5.1.1) (2025-01-03)
+
+
+### Bug Fixes
+
+* outdated modules in examples ([#88](https://github.com/equinor/terraform-azurerm-function-app/issues/88)) ([7297b2d](https://github.com/equinor/terraform-azurerm-function-app/commit/7297b2d63281f02809c728d726b8eeb30bc3a92e))
+
 ## [5.1.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.0.2...v5.1.0) (2024-11-26)
 
 
