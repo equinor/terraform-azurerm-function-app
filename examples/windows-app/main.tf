@@ -9,7 +9,8 @@ resource "random_id" "this" {
 }
 
 module "log_analytics" {
-  source = "github.com/equinor/terraform-azurerm-log-analytics?ref=v1.5.0"
+  source  = "equinor/log-analytics/azurerm"
+  version = "2.3.0"
 
   workspace_name      = "log-${random_id.this.hex}"
   resource_group_name = var.resource_group_name
@@ -26,7 +27,7 @@ resource "azurerm_service_plan" "this" {
 
 module "storage" {
   source  = "equinor/storage/azurerm"
-  version = "12.7.1"
+  version = "12.9.1"
 
   account_name               = "st${random_id.this.hex}"
   resource_group_name        = var.resource_group_name
@@ -39,7 +40,6 @@ module "storage" {
 }
 
 module "function_app" {
-  # source = "github.com/equinor/terraform-azurerm-function-app"
   source = "../.."
 
   app_name                   = "func-${random_id.this.hex}"
