@@ -199,7 +199,7 @@ resource "azurerm_windows_function_app" "this" {
   virtual_network_subnet_id = var.virtual_network_subnet_id
 
   dynamic "sticky_settings" {
-    for_each = length(var.sticky_settings_app_setting_names) > 0 || length(var.sticky_settings_connection_string_names) > 0 ? [""] : []
+    for_each = length(var.sticky_settings_app_setting_names) > 0 || length(var.sticky_settings_connection_string_names) > 0 ? [0] : []
 
     content {
       app_setting_names       = length(var.sticky_settings_app_setting_names) > 0 ? var.sticky_settings_app_setting_names : null
