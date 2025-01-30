@@ -45,6 +45,18 @@ variable "app_settings" {
   }
 }
 
+variable "sticky_settings_app_setting_names" {
+  description = "A list of names of app settings that this Function App will not swap between slots when a swap operation is triggered."
+  type        = list(string)
+  default     = []
+}
+
+variable "sticky_settings_connection_string_names" {
+  description = "A list of names of connection strings that this Function App will not swap between slots when a swap operation is triggered."
+  type        = list(string)
+  default     = []
+}
+
 variable "functions_extension_version" {
   description = "Which extension version to use for this Function App."
   type        = string
