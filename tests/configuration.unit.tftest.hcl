@@ -600,7 +600,7 @@ run "linux_sticky_settings_app_setting_names_filled" {
   }
 }
 
-run "linux_sticky_settings__connection_string_names_filled" {
+run "linux_sticky_settings_connection_string_names_filled" {
   command = plan
 
   variables {
