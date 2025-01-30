@@ -51,11 +51,11 @@ resource "azurerm_linux_function_app" "this" {
   virtual_network_subnet_id = var.virtual_network_subnet_id
 
   dynamic "sticky_settings" {
-    for_each = var.sticky_settings != null ? [var.sticky_settings] : []
+    for_each = length(var.sticky_settings_app_setting_names) > 0 || length(var.sticky_settings_connection_string_names) > 0 ? [""] : []
 
     content {
-      app_setting_names       = sticky_settings.value["app_setting_names"]
-      connection_string_names = sticky_settings.value["connection_string_names"]
+      app_setting_names       = var.sticky_settings_app_setting_names
+      connection_string_names = var.sticky_settings_connection_string_names
     }
   }
 
@@ -199,11 +199,11 @@ resource "azurerm_windows_function_app" "this" {
   virtual_network_subnet_id = var.virtual_network_subnet_id
 
   dynamic "sticky_settings" {
-    for_each = var.sticky_settings != null ? [var.sticky_settings] : []
+    for_each = length(var.sticky_settings_app_setting_names) > 0 || length(var.sticky_settings_connection_string_names) > 0 ? [""] : []
 
     content {
-      app_setting_names       = sticky_settings.value["app_setting_names"]
-      connection_string_names = sticky_settings.value["connection_string_names"]
+      app_setting_names       = var.sticky_settings_app_setting_names
+      connection_string_names = var.sticky_settings_connection_string_names
     }
   }
 

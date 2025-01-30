@@ -58,6 +58,53 @@ run "linux_basic_authentication_enabled" {
   }
 }
 
+run "linux_sticky_settings_empty" {
+  command = plan
+
+  variables {
+    app_name                   = run.setup_tests.app_name
+    resource_group_name        = run.setup_tests.resource_group_name
+    location                   = run.setup_tests.location
+    app_service_plan_id        = run.setup_tests.app_service_plan_id
+    storage_account_id         = run.setup_tests.storage_account_id
+    log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
+
+    sticky_settings_app_setting_names = []
+    sticky_settings_connection_string_names = []
+  }
+}
+
+run "linux_sticky_settings_filled" {
+  command = plan
+
+  variables {
+    app_name                   = run.setup_tests.app_name
+    resource_group_name        = run.setup_tests.resource_group_name
+    location                   = run.setup_tests.location
+    app_service_plan_id        = run.setup_tests.app_service_plan_id
+    storage_account_id         = run.setup_tests.storage_account_id
+    log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
+
+    sticky_settings_app_setting_names = [
+      "APPINSIGHTS_INSTRUMENTATIONKEY",
+      "APPLICATIONINSIGHTS_CONNECTION_STRING ",
+      "APPINSIGHTS_PROFILERFEATURE_VERSION",
+      "APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
+      "ApplicationInsightsAgent_EXTENSION_VERSION",
+      "XDT_MicrosoftApplicationInsights_BaseExtensions",
+      "DiagnosticServices_EXTENSION_VERSION",
+      "InstrumentationEngine_EXTENSION_VERSION",
+      "SnapshotDebugger_EXTENSION_VERSION",
+      "XDT_MicrosoftApplicationInsights_Mode",
+      "XDT_MicrosoftApplicationInsights_PreemptSdk",
+      "APPLICATIONINSIGHTS_CONFIGURATION_CONTENT",
+      "XDT_MicrosoftApplicationInsightsJava",
+      "XDT_MicrosoftApplicationInsights_NodeJS",
+    ]
+    sticky_settings_connection_string_names = ["connection strings"]
+  }
+}
+
 run "windows_basic_authentication_disabled" {
   command = plan
 
@@ -519,5 +566,54 @@ run "windows_client_certificate_enabled" {
   assert {
     condition     = azurerm_windows_function_app.this[0].client_certificate_enabled == true
     error_message = "Client certificate disable for Function App"
+  }
+}
+
+run "windows_sticky_settings_empty" {
+  command = plan
+
+  variables {
+    app_name                   = run.setup_tests.app_name
+    resource_group_name        = run.setup_tests.resource_group_name
+    location                   = run.setup_tests.location
+    kind                       = "Windows"
+    app_service_plan_id        = run.setup_tests.app_service_plan_id
+    storage_account_id         = run.setup_tests.storage_account_id
+    log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
+
+    sticky_settings_app_setting_names = []
+    sticky_settings_connection_string_names = []
+  }
+}
+
+run "windows_sticky_settings_filled" {
+  command = plan
+
+  variables {
+    app_name                   = run.setup_tests.app_name
+    resource_group_name        = run.setup_tests.resource_group_name
+    location                   = run.setup_tests.location
+    kind                       = "Windows"
+    app_service_plan_id        = run.setup_tests.app_service_plan_id
+    storage_account_id         = run.setup_tests.storage_account_id
+    log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
+
+    sticky_settings_app_setting_names = [
+      "APPINSIGHTS_INSTRUMENTATIONKEY",
+      "APPLICATIONINSIGHTS_CONNECTION_STRING ",
+      "APPINSIGHTS_PROFILERFEATURE_VERSION",
+      "APPINSIGHTS_SNAPSHOTFEATURE_VERSION",
+      "ApplicationInsightsAgent_EXTENSION_VERSION",
+      "XDT_MicrosoftApplicationInsights_BaseExtensions",
+      "DiagnosticServices_EXTENSION_VERSION",
+      "InstrumentationEngine_EXTENSION_VERSION",
+      "SnapshotDebugger_EXTENSION_VERSION",
+      "XDT_MicrosoftApplicationInsights_Mode",
+      "XDT_MicrosoftApplicationInsights_PreemptSdk",
+      "APPLICATIONINSIGHTS_CONFIGURATION_CONTENT",
+      "XDT_MicrosoftApplicationInsightsJava",
+      "XDT_MicrosoftApplicationInsights_NodeJS",
+    ]
+    sticky_settings_connection_string_names = ["connection strings"]
   }
 }
