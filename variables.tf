@@ -228,6 +228,49 @@ variable "identity_ids" {
   default     = []
 }
 
+variable "http2_enabled" {
+  description = "Should the HTTP/2 protocol be enabled for this Function App?"
+  type        = bool
+  default     = false
+}
+
+variable "ftps_state" {
+  description = "The state of the FTP / FTPS service for this Function App. Value must be \"AllAllowed\", \"FtpsOnly\" or \"Disabled\"."
+  type        = string
+  default     = "Disabled"
+
+  validation {
+    condition     = contains(["AllAllowed", "FtpsOnly", "Disabled"], var.ftps_state)
+    error_message = "FTPS state must be \"AllAllowed\", \"FtpsOnly\" or \"Disabled\"."
+  }
+}
+
+variable "client_certificate_mode" {
+  description = "The client cerftificate mode for this Function App. Value must be \"Required\", \"Optional\" or \"OptionalInteractiveUser\"."
+  type        = string
+  default     = "Required"
+}
+
+variable "client_certificate_enabled" {
+  description = "Should client certificate be enabled for this Function App?"
+  type        = bool
+  default     = false
+}
+
+variable "ftp_publish_basic_authentication_enabled" {
+  description = "Should basic (username and password) authentication be enabled for the FTP client?"
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
+variable "webdeploy_publish_basic_authentication_enabled" {
+  description = "Should basic (username and password) authentication be enabled for the WebDeploy client?"
+  type        = bool
+  default     = false
+  nullable    = false
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)

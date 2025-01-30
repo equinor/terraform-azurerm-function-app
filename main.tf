@@ -4,6 +4,10 @@ locals {
 
   storage_account_name = provider::azurerm::parse_resource_id(var.storage_account_id).resource_name
 
+  # Built-in logging is no longer recommended. Use Application Insights instead.
+  # Ref: https://learn.microsoft.com/en-us/azure/azure-functions/configure-monitoring#disable-built-in-logging
+  builtin_logging_enabled = false
+
   # Auto assign Key Vault reference identity
   identity_ids = concat(compact([var.key_vault_reference_identity_id]), var.identity_ids)
 
@@ -34,6 +38,14 @@ resource "azurerm_linux_function_app" "this" {
   app_settings                = var.app_settings
   functions_extension_version = var.functions_extension_version
 
+  client_certificate_mode    = var.client_certificate_mode
+  client_certificate_enabled = var.client_certificate_enabled
+
+  ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
+  webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
+
+  builtin_logging_enabled = local.builtin_logging_enabled
+
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
   virtual_network_subnet_id = var.virtual_network_subnet_id
@@ -55,6 +67,10 @@ resource "azurerm_linux_function_app" "this" {
     use_32_bit_worker                 = var.use_32_bit_worker
     ip_restriction_default_action     = var.ip_restriction_default_action
     scm_ip_restriction_default_action = var.scm_ip_restriction_default_action
+
+    http2_enabled = var.http2_enabled
+
+    ftps_state = var.ftps_state
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
@@ -166,6 +182,14 @@ resource "azurerm_windows_function_app" "this" {
   app_settings                = var.app_settings
   functions_extension_version = var.functions_extension_version
 
+  client_certificate_mode    = var.client_certificate_mode
+  client_certificate_enabled = var.client_certificate_enabled
+
+  ftp_publish_basic_authentication_enabled       = var.ftp_publish_basic_authentication_enabled
+  webdeploy_publish_basic_authentication_enabled = var.webdeploy_publish_basic_authentication_enabled
+
+  builtin_logging_enabled = local.builtin_logging_enabled
+
   key_vault_reference_identity_id = var.key_vault_reference_identity_id
 
   virtual_network_subnet_id = var.virtual_network_subnet_id
@@ -187,6 +211,10 @@ resource "azurerm_windows_function_app" "this" {
     use_32_bit_worker                 = var.use_32_bit_worker
     ip_restriction_default_action     = var.ip_restriction_default_action
     scm_ip_restriction_default_action = var.scm_ip_restriction_default_action
+
+    http2_enabled = var.http2_enabled
+
+    ftps_state = var.ftps_state
 
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions

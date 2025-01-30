@@ -1,5 +1,23 @@
 # Changelog
 
+## [5.1.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.1.0...v5.1.1) (2025-01-03)
+
+
+### Bug Fixes
+
+* outdated modules in examples ([#88](https://github.com/equinor/terraform-azurerm-function-app/issues/88)) ([7297b2d](https://github.com/equinor/terraform-azurerm-function-app/commit/7297b2d63281f02809c728d726b8eeb30bc3a92e))
+
+## [5.1.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.0.2...v5.1.0) (2024-11-26)
+
+
+### Features
+
+* configure basic authentication for publishing ([#77](https://github.com/equinor/terraform-azurerm-function-app/issues/77)) ([562a282](https://github.com/equinor/terraform-azurerm-function-app/commit/562a282b692ea083bea452240f9b0fbfd5af619d))
+* configure client certificate mode ([#80](https://github.com/equinor/terraform-azurerm-function-app/issues/80)) ([c7c1859](https://github.com/equinor/terraform-azurerm-function-app/commit/c7c185930303b5af7fd773985aab1a3207750bf8))
+* configure FTPS state ([#81](https://github.com/equinor/terraform-azurerm-function-app/issues/81)) ([815df1f](https://github.com/equinor/terraform-azurerm-function-app/commit/815df1f4a125b726894f1de1dbd099319afbd6fa))
+* configure HTTP/2 protocol ([#82](https://github.com/equinor/terraform-azurerm-function-app/issues/82)) ([937d8b1](https://github.com/equinor/terraform-azurerm-function-app/commit/937d8b17ad3351ae52e850d64c5cb74cd2d42e76))
+* disable built-in logging ([#79](https://github.com/equinor/terraform-azurerm-function-app/issues/79)) ([cdf5107](https://github.com/equinor/terraform-azurerm-function-app/commit/cdf5107365bb9facca1bcb84338d79584524ef7f))
+
 ## [5.0.2](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.0.1...v5.0.2) (2024-08-26)
 
 
