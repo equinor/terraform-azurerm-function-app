@@ -50,9 +50,13 @@ resource "azurerm_linux_function_app" "this" {
 
   virtual_network_subnet_id = var.virtual_network_subnet_id
 
-  sticky_settings {
-    app_setting_names       = var.sticky_settings_connection_string_names
-    connection_string_names = var.sticky_settings_connection_string_names
+  dynamic "sticky_settings" {
+    for_each = var.sticky_settings != null ? [var.sticky_settings] : []
+
+    content {
+      app_setting_names       = sticky_settings.value["app_setting_names"]
+      connection_string_names = sticky_settings.value["connection_string_names"]
+    }
   }
 
   site_config {
@@ -194,9 +198,13 @@ resource "azurerm_windows_function_app" "this" {
 
   virtual_network_subnet_id = var.virtual_network_subnet_id
 
-  sticky_settings {
-    app_setting_names       = var.sticky_settings_connection_string_names
-    connection_string_names = var.sticky_settings_connection_string_names
+  dynamic "sticky_settings" {
+    for_each = var.sticky_settings != null ? [var.sticky_settings] : []
+
+    content {
+      app_setting_names       = sticky_settings.value["app_setting_names"]
+      connection_string_names = sticky_settings.value["connection_string_names"]
+    }
   }
 
   site_config {
