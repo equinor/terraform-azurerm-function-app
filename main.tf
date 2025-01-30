@@ -54,8 +54,8 @@ resource "azurerm_linux_function_app" "this" {
     for_each = length(var.sticky_settings_app_setting_names) > 0 || length(var.sticky_settings_connection_string_names) > 0 ? [""] : []
 
     content {
-      app_setting_names       = var.sticky_settings_app_setting_names
-      connection_string_names = var.sticky_settings_connection_string_names
+      app_setting_names       = length(var.sticky_settings_app_setting_names) > 0 ? var.sticky_settings_app_setting_names : null
+      connection_string_names = length(var.sticky_settings_connection_string_names) > 0 ? var.sticky_settings_connection_string_names : null
     }
   }
 
@@ -202,8 +202,8 @@ resource "azurerm_windows_function_app" "this" {
     for_each = length(var.sticky_settings_app_setting_names) > 0 || length(var.sticky_settings_connection_string_names) > 0 ? [""] : []
 
     content {
-      app_setting_names       = var.sticky_settings_app_setting_names
-      connection_string_names = var.sticky_settings_connection_string_names
+      app_setting_names       = length(var.sticky_settings_app_setting_names) > 0 ? var.sticky_settings_app_setting_names : null
+      connection_string_names = length(var.sticky_settings_connection_string_names) > 0 ? var.sticky_settings_connection_string_names : null
     }
   }
 
