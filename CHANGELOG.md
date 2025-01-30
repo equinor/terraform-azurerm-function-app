@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.2.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.1.1...v5.2.0) (2025-01-30)
+
+
+### Features
+
+* configure sticky settings ([#76](https://github.com/equinor/terraform-azurerm-function-app/issues/76)) ([ebe5b41](https://github.com/equinor/terraform-azurerm-function-app/commit/ebe5b4156aea713cb3d5d32e1db4506658c18d88))
+
 ## [5.1.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.1.0...v5.1.1) (2025-01-03)
 
 
