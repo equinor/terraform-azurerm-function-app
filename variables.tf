@@ -43,6 +43,11 @@ variable "app_settings" {
     condition     = length(setintersection(["FUNCTIONS_EXTENSION_VERSION"], keys(var.app_settings))) == 0
     error_message = "Functions extension version must be configured using the \"functions_extension_version\" variable."
   }
+
+  validation {
+    condition     = length(setintersection(["APPLICATIONINSIGHTS_CONNECTION_STRING", "APPINSIGHTS_INSTRUMENTATIONKEY"], keys(var.app_settings))) == 0
+    error_message = "Application insights must be configured using the \"application_insights_connection_string\" variable."
+  }
 }
 
 variable "sticky_settings_app_setting_names" {
