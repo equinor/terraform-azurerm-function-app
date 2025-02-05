@@ -1,5 +1,13 @@
 # Changelog
 
+## [5.2.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.2.0...v5.2.1) (2025-02-05)
+
+
+### Bug Fixes
+
+* prevent configuration of `AzureWebJobsStorage` app setting ([#92](https://github.com/equinor/terraform-azurerm-function-app/issues/92)) ([2634bf6](https://github.com/equinor/terraform-azurerm-function-app/commit/2634bf654e1b38cb969e8cc82a98ef8160ad76a7))
+* prevent configuration of Application Insights app settings ([#91](https://github.com/equinor/terraform-azurerm-function-app/issues/91)) ([df8bdc6](https://github.com/equinor/terraform-azurerm-function-app/commit/df8bdc6317f553298acdf8acb6358e74719c78d7))
+
 ## [5.2.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.1.1...v5.2.0) (2025-01-30)
 
 
