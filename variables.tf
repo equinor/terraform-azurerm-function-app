@@ -35,7 +35,7 @@ variable "app_settings" {
   nullable    = false
 
   validation {
-    condition     = length(setintersection(["AzureWebJobsDashboard__accountName", "AzureWebJobsStorage__accountName"], keys(var.app_settings))) == 0
+    condition     = length(setintersection(["AzureWebJobsDashboard__accountName", "AzureWebJobsStorage", "AzureWebJobsStorage__accountName"], keys(var.app_settings))) == 0
     error_message = "Storage account must be configured using the \"storage_account_id\" variable."
   }
 
