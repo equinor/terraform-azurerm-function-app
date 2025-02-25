@@ -282,6 +282,12 @@ variable "storage_account_access_key" {
   default     = null
 }
 
+variable "storage_uses_managed_identity" {
+  description = "Should the Function App use Managed Identity to access the storage account. Conflicts with storage_account_access_key."
+  type        = bool
+  default     = true
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)

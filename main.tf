@@ -29,8 +29,8 @@ resource "azurerm_linux_function_app" "this" {
   service_plan_id     = var.app_service_plan_id
 
   storage_account_name          = local.storage_account_name
-  storage_account_access_key    = var.storage_account_access_key # Use managed identity instead
-  storage_uses_managed_identity = true
+  storage_account_access_key    = !var.storage_uses_managed_identity ? var.storage_account_access_key : null # Use managed identities instead
+  storage_uses_managed_identity = var.storage_uses_managed_identity
 
   # Enforced by Equinor policy
   https_only = true
@@ -177,8 +177,8 @@ resource "azurerm_windows_function_app" "this" {
   service_plan_id     = var.app_service_plan_id
 
   storage_account_name          = local.storage_account_name
-  storage_account_access_key    = var.storage_account_access_key # Use managed identity instead
-  storage_uses_managed_identity = true
+  storage_account_access_key    = !var.storage_uses_managed_identity ? var.storage_account_access_key : null # Use managed identities instead
+  storage_uses_managed_identity = var.storage_uses_managed_identity
 
   # Enforced by Equinor policy
   https_only = true
@@ -319,6 +319,12 @@ resource "azurerm_role_assignment" "this" {
   scope                = var.storage_account_id
   role_definition_name = "Storage Blob Data Contributor"
   principal_id         = local.function_app.identity[0].principal_id
+}
+
+resource "azurerm_role_assignment" "this" {
+  scope        = var.storage_account_id
+  count        = !var.storage_uses_managed_identity ? 0 : 1
+  principal_id = local.function_app.identity[0].principal_id
 }
 
 resource "azurerm_monitor_diagnostic_setting" "this" {
