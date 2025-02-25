@@ -321,7 +321,7 @@ resource "azurerm_role_assignment" "this" {
   principal_id         = local.function_app.identity[0].principal_id
 }
 
-resource "azurerm_role_assignment" "this" {
+resource "azurerm_role_assignment" "id" {
   scope        = var.storage_account_id
   count        = !var.storage_uses_managed_identity ? 0 : 1
   principal_id = local.function_app.identity[0].principal_id
