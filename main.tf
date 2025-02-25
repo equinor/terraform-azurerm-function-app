@@ -316,6 +316,8 @@ check "build_settings_check" {
 
 # Ref: https://github.com/Azure-Samples/functions-storage-managed-identity
 resource "azurerm_role_assignment" "this" {
+  count = !var.storage_uses_managed_identity ? 0 : 1
+
   scope                = var.storage_account_id
   role_definition_name = "Storage Blob Data Contributor"
   principal_id         = local.function_app.identity[0].principal_id
