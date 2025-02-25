@@ -29,7 +29,7 @@ resource "azurerm_linux_function_app" "this" {
   service_plan_id     = var.app_service_plan_id
 
   storage_account_name          = local.storage_account_name
-  storage_account_access_key    = null # Use managed identity instead
+  storage_account_access_key    = var.storage_account_access_key # Use managed identity instead
   storage_uses_managed_identity = true
 
   # Enforced by Equinor policy
@@ -177,7 +177,7 @@ resource "azurerm_windows_function_app" "this" {
   service_plan_id     = var.app_service_plan_id
 
   storage_account_name          = local.storage_account_name
-  storage_account_access_key    = null # Use managed identity instead
+  storage_account_access_key    = var.storage_account_access_key # Use managed identity instead
   storage_uses_managed_identity = true
 
   # Enforced by Equinor policy

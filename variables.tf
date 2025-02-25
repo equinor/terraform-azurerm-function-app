@@ -276,6 +276,12 @@ variable "webdeploy_publish_basic_authentication_enabled" {
   nullable    = false
 }
 
+variable "storage_account_access_key" {
+  description = "The access key which will be used to access the backend storage account for the Function App. Conflicts with storage_uses_managed_identity."
+  type        = string
+  default     = null
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)
