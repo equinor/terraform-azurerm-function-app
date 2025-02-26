@@ -9,6 +9,7 @@ Terraform module which creates Azure Function App resources.
 
 ## Features
 
+- Linux Function App created by default.
 - HTTPS enforced.
 - Public network access denied by default.
 - Audit logs sent to given Log Analytics workspace by default.
