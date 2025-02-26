@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.3.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.2.1...v5.3.0) (2025-02-26)
+
+
+### Features
+
+* add variable `storage_account_access_key` ([#94](https://github.com/equinor/terraform-azurerm-function-app/issues/94)) ([f9d11eb](https://github.com/equinor/terraform-azurerm-function-app/commit/f9d11eb672a4b1c28e4d974677d7715d7bccdde1))
+
 ## [5.2.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.2.0...v5.2.1) (2025-02-05)
 
 
