@@ -283,9 +283,10 @@ variable "storage_account_access_key" {
 }
 
 variable "storage_uses_managed_identity" {
-  description = "Should the Function App use Managed Identity to access the storage account. Conflicts with storage_account_access_key."
+  description = "Should this Function App use its system-assigned identity to access the connected Storage account?"
   type        = bool
   default     = true
+  nullable    = false
 }
 
 variable "tags" {
