@@ -29,8 +29,8 @@ resource "azurerm_linux_function_app" "this" {
   service_plan_id     = var.app_service_plan_id
 
   storage_account_name          = local.storage_account_name
-  storage_account_access_key    = null # Use managed identity instead
-  storage_uses_managed_identity = true
+  storage_account_access_key    = !var.storage_uses_managed_identity ? var.storage_account_access_key : null
+  storage_uses_managed_identity = var.storage_uses_managed_identity
 
   # Enforced by Equinor policy
   https_only = true
@@ -177,8 +177,8 @@ resource "azurerm_windows_function_app" "this" {
   service_plan_id     = var.app_service_plan_id
 
   storage_account_name          = local.storage_account_name
-  storage_account_access_key    = null # Use managed identity instead
-  storage_uses_managed_identity = true
+  storage_account_access_key    = !var.storage_uses_managed_identity ? var.storage_account_access_key : null
+  storage_uses_managed_identity = var.storage_uses_managed_identity
 
   # Enforced by Equinor policy
   https_only = true
@@ -316,6 +316,8 @@ check "build_settings_check" {
 
 # Ref: https://github.com/Azure-Samples/functions-storage-managed-identity
 resource "azurerm_role_assignment" "this" {
+  count = !var.storage_uses_managed_identity ? 0 : 1
+
   scope                = var.storage_account_id
   role_definition_name = "Storage Blob Data Contributor"
   principal_id         = local.function_app.identity[0].principal_id

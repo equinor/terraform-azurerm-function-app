@@ -276,6 +276,20 @@ variable "webdeploy_publish_basic_authentication_enabled" {
   nullable    = false
 }
 
+variable "storage_account_access_key" {
+  description = "An access key which will be used to access the Storage account connected to this Function App. Required if value of \"storage_uses_managed_identity\" is false."
+  type        = string
+  default     = null
+  nullable    = true
+}
+
+variable "storage_uses_managed_identity" {
+  description = "Should this Function App use its system-assigned identity to access the connected Storage account?"
+  type        = bool
+  default     = true
+  nullable    = false
+}
+
 variable "tags" {
   description = "A map of tags to assign to the resources."
   type        = map(string)
