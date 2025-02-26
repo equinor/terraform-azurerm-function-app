@@ -103,13 +103,13 @@ Terraform module which creates Azure Function App resources.
 
 1. Initialize working directory:
 
-    ```bash
+    ```console
     terraform init
     ```
 
 1. Execute tests:
 
-    ```bash
+    ```console
     terraform test
     ```
 
