@@ -1,8 +1,9 @@
 # Terraform module for Azure Function App
 
-[![SCM Compliance](https://scm-compliance-api.radix.equinor.com/repos/equinor/terraform-azurerm-function-app/badge)](https://scm-compliance-api.radix.equinor.com/repos/equinor/terraform-azurerm-function-app/badge)
-[![Equinor Terraform Baseline](https://img.shields.io/badge/Equinor%20Terraform%20Baseline-1.0.0-blueviolet)](https://github.com/equinor/terraform-baseline)
-[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg)](https://conventionalcommits.org)
+[![GitHub License](https://img.shields.io/github/license/equinor/terraform-azurerm-function-app)](https://github.com/equinor/terraform-azurerm-function-app/blob/main/LICENSE)
+[![GitHub Release](https://img.shields.io/github/v/release/equinor/terraform-azurerm-function-app)](https://github.com/equinor/terraform-azurerm-function-app/releases/latest)
+[![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-%23FE5196?logo=conventionalcommits&logoColor=white)](https://conventionalcommits.org)
+[![SCM Compliance](https://scm-compliance-api.radix.equinor.com/repos/equinor/terraform-azurerm-function-app/badge)](https://developer.equinor.com/governance/scm-policy/)
 
 Terraform module which creates Azure Function App resources.
 
