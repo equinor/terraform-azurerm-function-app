@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.3.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.3.0...v5.3.1) (2025-02-26)
+
+
+### Bug Fixes
+
+* unable to connect Storage using access key ([#96](https://github.com/equinor/terraform-azurerm-function-app/issues/96)) ([4ae4d0e](https://github.com/equinor/terraform-azurerm-function-app/commit/4ae4d0e4db2d49b99e7e7da23f94f9417d560b2f))
+
 ## [5.3.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.2.1...v5.3.0) (2025-02-26)
 
 
