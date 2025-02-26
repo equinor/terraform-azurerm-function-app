@@ -2,7 +2,8 @@ locals {
   is_windows   = var.kind == "Windows"
   function_app = local.is_windows ? azurerm_windows_function_app.this[0] : azurerm_linux_function_app.this[0]
 
-  storage_account_name = provider::azurerm::parse_resource_id(var.storage_account_id).resource_name
+  storage_account_name       = provider::azurerm::parse_resource_id(var.storage_account_id).resource_name
+  storage_account_access_key = !var.storage_uses_managed_identity ? var.storage_account_access_key : null
 
   # Built-in logging is no longer recommended. Use Application Insights instead.
   # Ref: https://learn.microsoft.com/en-us/azure/azure-functions/configure-monitoring#disable-built-in-logging
@@ -29,7 +30,7 @@ resource "azurerm_linux_function_app" "this" {
   service_plan_id     = var.app_service_plan_id
 
   storage_account_name          = local.storage_account_name
-  storage_account_access_key    = !var.storage_uses_managed_identity ? var.storage_account_access_key : null
+  storage_account_access_key    = local.storage_account_access_key
   storage_uses_managed_identity = var.storage_uses_managed_identity
 
   # Enforced by Equinor policy
@@ -177,7 +178,7 @@ resource "azurerm_windows_function_app" "this" {
   service_plan_id     = var.app_service_plan_id
 
   storage_account_name          = local.storage_account_name
-  storage_account_access_key    = !var.storage_uses_managed_identity ? var.storage_account_access_key : null
+  storage_account_access_key    = local.storage_account_access_key
   storage_uses_managed_identity = var.storage_uses_managed_identity
 
   # Enforced by Equinor policy
