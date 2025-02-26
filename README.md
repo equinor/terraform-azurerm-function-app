@@ -17,9 +17,9 @@ Terraform module which creates Azure Function App resources.
 
 ## Prerequisites
 
-- Azure role `Contributor` at the resource group scope.
-- Azure role `Role Based Access Administrator` at the Storage account scope.
-- Azure role `Log Analytics Contributor` at the Log Analytics workspace scope.
+- Sign up for an [Azure account](https://azure.microsoft.com/en-us/pricing/purchase-options/azure-account).
+- Install the [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli).
+- Install [Terraform](https://developer.hashicorp.com/terraform/install).
 
 ## Usage
 
