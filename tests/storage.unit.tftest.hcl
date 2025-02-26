@@ -67,6 +67,67 @@ run "windows_storage_uses_managed_identity" {
   }
 }
 
+run "linux_storage_uses_managed_identity_false" {
+  command = plan
+
+  variables {
+    app_name                   = run.setup_tests.app_name
+    resource_group_name        = run.setup_tests.resource_group_name
+    location                   = run.setup_tests.location
+    app_service_plan_id        = run.setup_tests.app_service_plan_id
+    log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
+
+    storage_account_id            = run.setup_tests.storage_account_id
+    storage_uses_managed_identity = false
+  }
+
+  assert {
+    condition     = azurerm_linux_function_app.this[0].storage_account_access_key == null
+    error_message = "Storage account access key is not null"
+  }
+
+  assert {
+    condition     = azurerm_linux_function_app.this[0].storage_uses_managed_identity == false
+    error_message = "Storage uses managed identity when it should not"
+  }
+
+  assert {
+    condition     = length(azurerm_role_assignment.this) == 0
+    error_message = "Role assignment is created at storage account when it should not"
+  }
+}
+
+run "windows_storage_uses_managed_identity_false" {
+  command = plan
+
+  variables {
+    app_name                   = run.setup_tests.app_name
+    resource_group_name        = run.setup_tests.resource_group_name
+    location                   = run.setup_tests.location
+    kind                       = "Windows"
+    app_service_plan_id        = run.setup_tests.app_service_plan_id
+    log_analytics_workspace_id = run.setup_tests.log_analytics_workspace_id
+
+    storage_account_id            = run.setup_tests.storage_account_id
+    storage_uses_managed_identity = false
+  }
+
+  assert {
+    condition     = azurerm_windows_function_app.this[0].storage_account_access_key == null
+    error_message = "Storage account access key is not null"
+  }
+
+  assert {
+    condition     = azurerm_windows_function_app.this[0].storage_uses_managed_identity == false
+    error_message = "Storage uses managed identity when it should not"
+  }
+
+  assert {
+    condition     = length(azurerm_role_assignment.this) == 0
+    error_message = "Role assignment is created at storage account when it should not"
+  }
+}
+
 run "linux_storage_account_access_key" {
   command = plan
 
