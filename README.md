@@ -99,46 +99,21 @@ Terraform module which creates Azure Function App resources.
     terraform apply
     ```
 
-## Development
-
-1. Read [this document](https://code.visualstudio.com/docs/devcontainers/containers).
-
-1. Clone this repository.
-
-1. Configure Terraform variables in a file `.devcontainer/devcontainer.env`:
-
-    ```env
-    TF_VAR_resource_group_name=
-    TF_VAR_location=
-    ```
-
-1. Open repository in dev container.
-
 ## Testing
 
-1. Change to the test directory:
+1. Initialize working directory:
 
-    ```console
-    cd test
+    ```bash
+    terraform init
     ```
 
-1. Login to Azure:
+1. Execute tests:
 
-    ```console
-    az login
+    ```bash
+    terraform test
     ```
 
-1. Set active subscription:
-
-    ```console
-    az account set -s <SUBSCRIPTION_NAME_OR_ID>
-    ```
-
-1. Run tests:
-
-    ```console
-    go test -timeout 60m
-    ```
+    See [`terraform test` command documentation](https://developer.hashicorp.com/terraform/cli/commands/test) for options.
 
 ## Contributing
 
