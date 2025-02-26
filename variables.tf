@@ -277,9 +277,10 @@ variable "webdeploy_publish_basic_authentication_enabled" {
 }
 
 variable "storage_account_access_key" {
-  description = "The access key which will be used to access the backend storage account for the Function App. Conflicts with storage_uses_managed_identity."
+  description = "An access key which will be used to access the Storage account connected to this Function App. Required if value of \"storage_uses_managed_identity\" is false."
   type        = string
   default     = null
+  nullable    = true
 }
 
 variable "storage_uses_managed_identity" {
