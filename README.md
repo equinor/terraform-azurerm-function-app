@@ -12,6 +12,7 @@ Terraform module which creates Azure Function App resources.
 - Linux Function App created by default.
 - HTTPS enforced.
 - Public network access denied by default.
+- Identity-based connection to given Storage account configured by default (for Storage account requirements, see [notes](#storage-account-requirements)).
 - Audit logs sent to given Log Analytics workspace by default.
 - Changes to app settings `BUILD`, `BUILD_NUMBER` and `BUILD_ID` ignored, allowing them to be configured outside of Terraform (commonly in a CI/CD pipeline).
 
@@ -67,13 +68,10 @@ Terraform module which creates Azure Function App resources.
       source  = "equinor/storage/azurerm"
       version = "~> 12.11"
 
-      account_name               = "funcstorage"
-      resource_group_name        = var.resource_group_name
-      location                   = var.location
-      log_analytics_workspace_id = module.log_analytics.workspace_id
-
-      # You can't use a network-secured Storage account when your Function App is hosted in an App Service plan with the "Y1" SKU.
-      # Ref: https://learn.microsoft.com/en-us/azure/azure-functions/storage-considerations?tabs=azure-cli#storage-account-requirements
+      account_name                 = "funcstorage"
+      resource_group_name          = var.resource_group_name
+      location                     = var.location
+      log_analytics_workspace_id   = module.log_analytics.workspace_id
       network_rules_default_action = "Allow"
     }
 
@@ -98,6 +96,12 @@ Terraform module which creates Azure Function App resources.
     ```console
     terraform apply
     ```
+
+## Notes
+
+### Storage account requirements
+
+- You can't use a network-secured Storage account when your Function App is hosted in an App Service plan with the `Y1` SKU ([ref.](https://learn.microsoft.com/en-us/azure/azure-functions/storage-considerations?tabs=azure-cli#storage-account-requirements)).
 
 ## Testing
 
