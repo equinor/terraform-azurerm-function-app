@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.3.2](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.3.1...v5.3.2) (2025-03-10)
+
+
+### Documentation
+
+* clarify Storage account requirements ([#98](https://github.com/equinor/terraform-azurerm-function-app/issues/98)) ([90288f4](https://github.com/equinor/terraform-azurerm-function-app/commit/90288f415612a18b8483f55cf88073d616018052))
+
 ## [5.3.1](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.3.0...v5.3.1) (2025-02-26)
 
 
