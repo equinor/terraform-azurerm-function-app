@@ -98,6 +98,12 @@ variable "kind" {
   }
 }
 
+variable "application_insights_key" {
+  description = "The Instrumentation Key for connecting the Function App to Application Insights."
+  type = string
+  default = null
+}
+
 variable "application_insights_connection_string" {
   description = "The connection string of the Application Insights component to connect to this Function App."
   type        = string
