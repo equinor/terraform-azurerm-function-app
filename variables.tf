@@ -100,8 +100,8 @@ variable "kind" {
 
 variable "application_insights_key" {
   description = "The Instrumentation Key for connecting the Function App to Application Insights."
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 
 variable "application_insights_connection_string" {
