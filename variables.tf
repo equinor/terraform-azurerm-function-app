@@ -98,6 +98,13 @@ variable "kind" {
   }
 }
 
+# Ref: https://learn.microsoft.com/en-us/azure/azure-monitor/app/migrate-from-instrumentation-keys-to-connection-strings
+variable "application_insights_key" {
+  description = "The instrumentation key of the Application Insights component to connect to this Function App. Support for instrumentation key ingestion will end on March 31, 2025. It's recommended to use application_insights_connection_string instead."
+  type        = string
+  default     = null
+}
+
 variable "application_insights_connection_string" {
   description = "The connection string of the Application Insights component to connect to this Function App."
   type        = string
