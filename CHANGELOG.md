@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.4.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.3.2...v5.4.0) (2025-03-17)
+
+
+### Features
+
+* add variable `application_insights_key` ([#100](https://github.com/equinor/terraform-azurerm-function-app/issues/100)) ([34c4996](https://github.com/equinor/terraform-azurerm-function-app/commit/34c49961b10323d4850851b89d45a6c87a91494d))
+
 ## [5.3.2](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.3.1...v5.3.2) (2025-03-10)
 
 
