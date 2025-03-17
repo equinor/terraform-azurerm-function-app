@@ -62,7 +62,6 @@ resource "azurerm_linux_function_app" "this" {
   }
 
   site_config {
-    # Ref: https://learn.microsoft.com/en-us/azure/azure-monitor/app/migrate-from-instrumentation-keys-to-connection-strings
     application_insights_key               = var.application_insights_key
     application_insights_connection_string = var.application_insights_connection_string
 
@@ -210,7 +209,6 @@ resource "azurerm_windows_function_app" "this" {
   }
 
   site_config {
-    # Ref: https://learn.microsoft.com/en-us/azure/azure-monitor/app/migrate-from-instrumentation-keys-to-connection-strings
     application_insights_key               = var.application_insights_key
     application_insights_connection_string = var.application_insights_connection_string
 
