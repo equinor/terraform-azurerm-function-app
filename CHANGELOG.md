@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.5.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.4.0...v5.5.0) (2025-03-20)
+
+
+### Features
+
+* deploy local ZIP-packaged application ([#102](https://github.com/equinor/terraform-azurerm-function-app/issues/102)) ([c321337](https://github.com/equinor/terraform-azurerm-function-app/commit/c3213372705dc673bd9900a918d4fafdfa23666f))
+
 ## [5.4.0](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.3.2...v5.4.0) (2025-03-17)
 
 
