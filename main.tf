@@ -34,10 +34,18 @@ resource "azurerm_linux_function_app" "this" {
   storage_account_access_key    = local.storage_account_access_key
   storage_uses_managed_identity = local.storage_uses_managed_identity
 
+  zip_deploy_file = var.zip_deploy_file
+
   # Enforced by Equinor policy
   https_only = true
 
-  app_settings                = var.app_settings
+  app_settings = var.zip_deploy_file != null ? merge(
+    var.app_settings,
+    {
+      "WEBSITE_RUN_FROM_PACKAGE" = 1
+    }
+  ) : var.app_settings
+
   functions_extension_version = var.functions_extension_version
 
   client_certificate_mode    = var.client_certificate_mode
@@ -184,7 +192,13 @@ resource "azurerm_windows_function_app" "this" {
   # Enforced by Equinor policy
   https_only = true
 
-  app_settings                = var.app_settings
+  app_settings = var.zip_deploy_file != null ? merge(
+    var.app_settings,
+    {
+      "WEBSITE_RUN_FROM_PACKAGE" = 1
+    }
+  ) : var.app_settings
+
   functions_extension_version = var.functions_extension_version
 
   client_certificate_mode    = var.client_certificate_mode

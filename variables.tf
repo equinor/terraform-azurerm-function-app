@@ -302,3 +302,13 @@ variable "tags" {
   type        = map(string)
   default     = {}
 }
+
+variable "zip_deploy_file" {
+  description = "The path to a ZIP file to deploy to this Function App."
+  type        = string
+  default     = null
+  validation {
+    condition     = !(var.zip_deploy_file != null && var.webdeploy_publish_basic_authentication_enabled)
+    error_message = "Cannot set zip_deploy_file when webdeploy_publish_basic_authentication_enabled is true."
+  }
+}
