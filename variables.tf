@@ -304,7 +304,7 @@ variable "tags" {
 }
 
 variable "zip_deploy_file" {
-  description = "The path to a ZIP file to deploy to this Function App."
+  description = "The path to a ZIP file to deploy to this Function App. Using this value requires either WEBSITE_RUN_FROM_PACKAGE=1 or SCM_DO_BUILD_DURING_DEPLOYMENT=true to be set in the app settings for a Linux app, or WEBSITE_RUN_FROM_ZIP=1 for a Windows app."
   type        = string
   default     = null
   validation {
