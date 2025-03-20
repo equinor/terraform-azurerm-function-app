@@ -189,6 +189,8 @@ resource "azurerm_windows_function_app" "this" {
   storage_account_access_key    = local.storage_account_access_key
   storage_uses_managed_identity = local.storage_uses_managed_identity
 
+  zip_deploy_file = var.zip_deploy_file
+
   # Enforced by Equinor policy
   https_only = true
 
