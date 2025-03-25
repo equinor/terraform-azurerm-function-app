@@ -39,7 +39,7 @@ resource "azurerm_linux_function_app" "this" {
   # Enforced by Equinor policy
   https_only = true
 
-  app_settings = var.app_settings
+  app_settings = null # Manage using standalone resource instead.
 
   functions_extension_version = var.functions_extension_version
 
@@ -144,11 +144,9 @@ resource "azurerm_linux_function_app" "this" {
 
   lifecycle {
     ignore_changes = [
-      # Ignore changes to common build settings.
-      # These are usually configured in CI/CD pipelines.
-      app_settings["BUILD"],
-      app_settings["BUILD_NUMBER"],
-      app_settings["BUILD_ID"],
+      # Ignore changes to app settings.
+      # Manage using standalone resource instead.
+      app_settings,
 
       # The following tags are managed by Azure
       tags["hidden-link: /app-insights-instrumentation-key"],
@@ -189,7 +187,7 @@ resource "azurerm_windows_function_app" "this" {
   # Enforced by Equinor policy
   https_only = true
 
-  app_settings = var.app_settings
+  app_settings = null # Manage using standalone resource instead.
 
   functions_extension_version = var.functions_extension_version
 
@@ -286,11 +284,9 @@ resource "azurerm_windows_function_app" "this" {
 
   lifecycle {
     ignore_changes = [
-      # Ignore changes to common build settings.
-      # These are usually configured in CI/CD pipelines.
-      app_settings["BUILD"],
-      app_settings["BUILD_NUMBER"],
-      app_settings["BUILD_ID"],
+      # Ignore changes to app settings.
+      # Manage using standalone resource instead.
+      app_settings,
 
       # The following tags are managed by Azure
       tags["hidden-link: /app-insights-instrumentation-key"],
@@ -313,10 +309,21 @@ resource "azurerm_windows_function_app" "this" {
   }
 }
 
-check "build_settings_check" {
-  assert {
-    condition     = length(setintersection(["BUILD", "BUILD_NUMBER", "BUILD_ID"], keys(var.app_settings))) == 0
-    error_message = "App settings \"BUILD\", \"BUILD_NUMBER\" and \"BUILD_ID\" should be configured outside of Terraform, commonly in a CI/CD pipeline. Any changes made to these app settings will be ignored."
+# Manage app settings using the AzAPI provider instead of AzureRM.
+# This enables the possibility of managing app settings either in Terraform or outside Terraform.
+# Ref: https://learn.microsoft.com/en-us/azure/templates/microsoft.web/2022-09-01/sites/config-appsettings?pivots=deployment-language-terraform
+#
+# An issue has been created for a standalone "app_settings" resource to be implemented in the AzureRM provider.
+# Ref: https://github.com/hashicorp/terraform-provider-azurerm/issues/28497
+resource "azapi_update_resource" "app_settings" {
+  type      = "Microsoft.Web/sites/config@2022-09-01"
+  name      = "appsettings"
+  parent_id = local.function_app.id
+
+  body = {
+    # Apply app settings managed in Terraform on top of app settings managed outside of Terraform.
+    # Ensures that app settings managed outside of Terraform are not lost.
+    properties = merge(local.function_app.app_settings, var.app_settings)
   }
 }
 
