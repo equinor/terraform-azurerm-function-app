@@ -309,21 +309,30 @@ resource "azurerm_windows_function_app" "this" {
   }
 }
 
-# Manage app settings using the AzAPI provider instead of AzureRM.
-# This enables the possibility of managing app settings either in Terraform or outside Terraform.
-# Ref: https://learn.microsoft.com/en-us/azure/templates/microsoft.web/2022-09-01/sites/config-appsettings?pivots=deployment-language-terraform
-#
-# An issue has been created for a standalone "app_settings" resource to be implemented in the AzureRM provider.
-# Ref: https://github.com/hashicorp/terraform-provider-azurerm/issues/28497
-resource "azapi_update_resource" "app_settings" {
+data "azapi_resource_id" "app_settings" {
   type      = "Microsoft.Web/sites/config@2022-09-01"
-  name      = "appsettings"
   parent_id = local.function_app.id
+  name      = "appsettings"
+}
+
+# Getting app settings directly from the Function App resource state does not include app settings that are implicitly managed by Terraform (e.g. FUNCTIONS_EXTENSION_VERSION).
+data "azapi_resource_action" "list_app_settings" {
+  type        = "Microsoft.Web/sites/config@2022-09-01"
+  resource_id = data.azapi_resource_id.app_settings.id
+  action      = "list"
+  method      = "POST"
+
+  response_export_values = ["properties"]
+}
+
+resource "azapi_update_resource" "app_settings" {
+  type        = "Microsoft.Web/sites/config@2022-09-01"
+  resource_id = data.azapi_resource_id.app_settings.id
 
   body = {
     # Apply app settings managed in Terraform on top of app settings managed outside of Terraform.
     # Ensures that app settings managed outside of Terraform are not lost.
-    properties = merge(local.function_app.app_settings, var.app_settings)
+    properties = merge(data.azapi_resource_action.list_app_settings.output.properties, var.app_settings)
   }
 }
 
