@@ -40,7 +40,7 @@ Terraform module which creates Azure Function App resources.
 
     module "function_app" {
       source  = "equinor/function-app/azurerm"
-      version = "~> 5.5"
+      version = "~> 5.6"
 
       app_name                   = "example-func"
       resource_group_name        = azurerm_resource_group.example.name
