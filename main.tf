@@ -39,7 +39,7 @@ resource "azurerm_linux_function_app" "this" {
   # Enforced by Equinor policy
   https_only = true
 
-  app_settings = null # Manage using standalone resource instead.
+  app_settings = var.app_settings
 
   functions_extension_version = var.functions_extension_version
 
@@ -144,9 +144,11 @@ resource "azurerm_linux_function_app" "this" {
 
   lifecycle {
     ignore_changes = [
-      # Ignore changes to app settings.
-      # Manage using standalone resource instead.
-      app_settings,
+      # Ignore changes to common build settings.
+      # These are usually configured in CI/CD pipelines.
+      app_settings["BUILD"],
+      app_settings["BUILD_NUMBER"],
+      app_settings["BUILD_ID"],
 
       # The following tags are managed by Azure
       tags["hidden-link: /app-insights-instrumentation-key"],
@@ -187,7 +189,7 @@ resource "azurerm_windows_function_app" "this" {
   # Enforced by Equinor policy
   https_only = true
 
-  app_settings = null # Manage using standalone resource instead.
+  app_settings = var.app_settings
 
   functions_extension_version = var.functions_extension_version
 
@@ -284,9 +286,11 @@ resource "azurerm_windows_function_app" "this" {
 
   lifecycle {
     ignore_changes = [
-      # Ignore changes to app settings.
-      # Manage using standalone resource instead.
-      app_settings,
+      # Ignore changes to common build settings.
+      # These are usually configured in CI/CD pipelines.
+      app_settings["BUILD"],
+      app_settings["BUILD_NUMBER"],
+      app_settings["BUILD_ID"],
 
       # The following tags are managed by Azure
       tags["hidden-link: /app-insights-instrumentation-key"],
@@ -309,30 +313,10 @@ resource "azurerm_windows_function_app" "this" {
   }
 }
 
-data "azapi_resource_id" "app_settings" {
-  type      = "Microsoft.Web/sites/config@2022-09-01"
-  parent_id = local.function_app.id
-  name      = "appsettings"
-}
-
-# Getting app settings directly from the Function App resource state does not include app settings that are implicitly managed by Terraform (e.g. FUNCTIONS_EXTENSION_VERSION).
-data "azapi_resource_action" "list_app_settings" {
-  type        = "Microsoft.Web/sites/config@2022-09-01"
-  resource_id = data.azapi_resource_id.app_settings.id
-  action      = "list"
-  method      = "POST"
-
-  response_export_values = ["properties"]
-}
-
-resource "azapi_update_resource" "app_settings" {
-  type        = "Microsoft.Web/sites/config@2022-09-01"
-  resource_id = data.azapi_resource_id.app_settings.id
-
-  body = {
-    # Apply app settings managed in Terraform on top of app settings managed outside of Terraform.
-    # Ensures that app settings managed outside of Terraform are not lost.
-    properties = merge(data.azapi_resource_action.list_app_settings.output.properties, var.app_settings)
+check "build_settings_check" {
+  assert {
+    condition     = length(setintersection(["BUILD", "BUILD_NUMBER", "BUILD_ID"], keys(var.app_settings))) == 0
+    error_message = "App settings \"BUILD\", \"BUILD_NUMBER\" and \"BUILD_ID\" should be configured outside of Terraform, commonly in a CI/CD pipeline. Any changes made to these app settings will be ignored."
   }
 }
 

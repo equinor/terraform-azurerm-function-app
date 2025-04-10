@@ -12,7 +12,6 @@ Terraform module which creates Azure Function App resources.
 - Linux Function App created by default.
 - HTTPS enforced.
 - Public network access denied by default.
-- App settings incrementally updated, allowing configuration outside of Terraform (e.g. in a CI/CD pipeline).
 - Identity-based connection to given Storage account configured by default (for Storage account requirements, see [notes](#storage-account-requirements)).
 - Audit logs sent to given Log Analytics workspace by default.
 - Changes to app settings `BUILD`, `BUILD_NUMBER` and `BUILD_ID` ignored, allowing them to be configured outside of Terraform (commonly in a CI/CD pipeline).
