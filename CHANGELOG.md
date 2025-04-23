@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.6.3](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.6.2...v5.6.3) (2025-04-23)
+
+
+### Documentation
+
+* fix indents in README ([55af1c5](https://github.com/equinor/terraform-azurerm-function-app/commit/55af1c53b9f470964e5ba2ea0713b062a68cf0ac))
+
 ## [5.6.2](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.6.1...v5.6.2) (2025-04-23)
 
 
