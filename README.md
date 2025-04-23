@@ -20,6 +20,7 @@ Terraform module which creates Azure Function App resources.
 
 - Azure role `Contributor` at the resource group scope.
 - Azure role `Web Plan Contributor` at the App Service plan scope.
+- Azure role `Role Based Access Control Administrator` at the Storage account scope.
 - Azure role `Log Analytics Contributor` at the Log Analytics workspace scope.
 
 ## Usage

@@ -320,7 +320,6 @@ check "build_settings_check" {
   }
 }
 
-# Ref: https://github.com/Azure-Samples/functions-storage-managed-identity
 resource "azurerm_role_assignment" "this" {
   count = !var.storage_uses_managed_identity ? 0 : 1
 
