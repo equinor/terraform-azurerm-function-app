@@ -90,17 +90,17 @@ You can't use a network-secured Storage account when your Function App is hosted
 
 1. Initialize working directory:
 
-   ```console
-   terraform init
-   ```
+    ```console
+    terraform init
+    ```
 
 1. Execute tests:
 
-   ```console
-   terraform test
-   ```
+    ```console
+    terraform test
+    ```
 
-   See [`terraform test` command documentation](https://developer.hashicorp.com/terraform/cli/commands/test) for options.
+    See [`terraform test` command documentation](https://developer.hashicorp.com/terraform/cli/commands/test) for options.
 
 ## Contributing
 
