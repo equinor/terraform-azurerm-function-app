@@ -27,6 +27,8 @@ Terraform module which creates Azure Function App resources.
 
 ```terraform
 provider "azurerm" {
+  storage_use_azuread = true
+
   features {}
 }
 
