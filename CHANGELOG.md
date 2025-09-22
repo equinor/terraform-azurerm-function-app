@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.6.4](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.6.3...v5.6.4) (2025-09-22)
+
+
+### Bug Fixes
+
+* upgrade required terraform version ([#109](https://github.com/equinor/terraform-azurerm-function-app/issues/109)) ([b076cf5](https://github.com/equinor/terraform-azurerm-function-app/commit/b076cf508397e4b9899acfb7c2b65d15cd583244))
+
 ## [5.6.3](https://github.com/equinor/terraform-azurerm-function-app/compare/v5.6.2...v5.6.3) (2025-04-23)
 
 
