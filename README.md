@@ -1,5 +1,12 @@
 # Terraform module for Azure Function App
 
+[![GitHub Release](https://img.shields.io/github/v/release/equinor/terraform-azurerm-function-app)](https://github.com/equinor/terraform-azurerm-function-app/releases/latest)
+[![Terraform Module Downloads](https://img.shields.io/terraform/module/dt/equinor/function-app/azurerm)](https://registry.terraform.io/modules/equinor/function-app/azurerm/latest)
+[![GitHub contributors](https://img.shields.io/github/contributors/equinor/terraform-azurerm-function-app)](https://github.com/equinor/terraform-azurerm-function-app/graphs/contributors)
+[![GitHub Issues](https://img.shields.io/github/issues/equinor/terraform-azurerm-function-app)](https://github.com/equinor/terraform-azurerm-function-app/issues)
+[![GitHub Pull requests](https://img.shields.io/github/issues-pr/equinor/terraform-azurerm-function-app)](https://github.com/equinor/terraform-azurerm-function-app/pulls)
+[![GitHub License](https://img.shields.io/github/license/equinor/terraform-azurerm-function-app)](https://github.com/equinor/terraform-azurerm-function-app/blob/main/LICENSE)
+
 Terraform module which creates Azure Function App resources.
 
 ## Features
